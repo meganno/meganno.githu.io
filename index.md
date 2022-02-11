@@ -1,37 +1,20 @@
-## Welcome to GitHub Pages
+## Welcome to the Meganno demo
 
-You can use the [editor on GitHub](https://github.com/meganno/meganno.githu.io/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+We provide a hosted Meganno service with limited functionarlites for demonstration purposes [here](http://13.52.218.71/).
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+The demostration is backed by Jupyterhub and will spawn a new notebook server for each user.
+To explore, you can choose to 
+1. Use a shared account we provide with username *demo* , password *tryit*. Note the jupyter notebook and the annotation space in the databases will be shared. There are risks of inconsistencies if multiple people are editing at the same time.
+2. Create your own account and namespace. During the first visit, you will be prompt to create a user, click "sign in with KeyCloak" -> "register" when prompted. For this public demo, we don't aim to collect any user data or annotation. We suggest you to use dummy name and email addresses (xxx@xxxx.com format is fine, we only do format validation)
 
-### Markdown
+After logged in, you will see the demo notebook we provide. We have prepopulated the database with the public [Twitter US Airline Sentiment](https://www.kaggle.com/crowdflower/twitter-airline-sentiment), created a schema to collect "postive", "negative" and "netural" classification labels and "happy" or "sad" span labels. We also set [sentence bert](https://huggingface.co/sentence-transformers) vector embeddings for all data points. To avoid inconsitencies, we turn off access for project managment functionalites like importing data, changing schema and setting metadata in this public demo.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Then follow the instructions in the notebook and happy exploring!
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
+Stay tuned for the public release for the toolkit for customized deployment where you can host your own service and databases.
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/meganno/meganno.githu.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
 ### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Having trouble? contact dan_z@megagon.ai and we’ll help you sort it out.
