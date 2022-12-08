@@ -21,3 +21,5 @@ Stay tuned for the public release for the toolkit for customized deployment wher
 ### Support or Contact
 
 Having trouble? contact us at {dan_z,hannah,rafael}@megagon.ai and we’ll be happy to help.
+
+If you are at EMNLP, stop by the Megagon Labs booth (exhibitor area #7) to speak with our lovely team members and check out a live demo!
