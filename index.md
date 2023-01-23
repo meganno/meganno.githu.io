@@ -1,6 +1,6 @@
 ## Welcome to the Meganno demo
 
-We provide a hosted Meganno service with limited functionarlites for demonstration purposes [here](https://mybinder.org/v2/gh/meganno/demo/main?filepath=%2Fnotebooks%2FDASH-Demo.ipynb).
+We provide a hosted Meganno service with limited functionarlites for demonstration purposes [here](https://mybinder.org/v2/gh/meganno/demo/main?filepath=%2Fnotebooks%2FDASH-Demo.ipynb) (Please open with chrome browser).
 
 
 To explore, download the demo repo and run 
