@@ -15,7 +15,7 @@ We provide a pip-installable client library and a demo notebook (add link). A Co
       - You may need to use [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) instead of password<br/>
 
 4. Set up OpenAI API Keys [using environment variables in place of your API key
-](https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety#h_a1ab3ba7b2) (They stays in your browser, we don't store your OpenAI keys)
+](https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety#h_a1ab3ba7b2) (They stay in your browser; we don't store your OpenAI keys)
 
 5. Explore in demo notebook
    - `pip install jupyter`
