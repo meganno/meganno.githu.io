@@ -1,25 +1,33 @@
-## Welcome to the Meganno demo
-
-We provide a hosted Meganno service with limited functionarlites for demonstration purposes [here](https://mybinder.org/v2/gh/meganno/demo/main?filepath=%2Fnotebooks%2FDASH-Demo.ipynb) (Please open with chrome browser).
+## Welcome to the MegAnno+ demo
 
 
-To explore, download the demo repo and run 
-```pip install -r requirements.txt``` 
-and open the notebook `DASH-Demo.ipynb` with your jupyter server.
+We provide a pip-installable client library and a demo notebook (add link). A Conda environment is strongly recommended; see below for instructions.
+
+
+## **Instructions**
+1. Download [conda](https://conda.io/projects/conda/en/stable/user-guide/install/download.html)
+2. Create a conda environment
+   - Run `conda create -n <env_name> python=3.9`
+   - Run `conda activate <env_name>`
+3. Install MegAnno+ libs (following development labeler-client and labeler-ui)
+    - Run `pip install "labeler_client[ui] @ git+ssh://git@github.com/rit-git/labeler-client.git"`
+    - Or run `pip install "labeler_client[ui] @ git+https://github.com/rit-git/labeler-client.git"`
+      - You may need to use [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) instead of password<br/>
+
+4. Set up OpenAI API Keys [using environment variables in place of your API key
+](https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety#h_a1ab3ba7b2) (They stays in your browser, we don't store your OpenAI keys)
+
+5. Explore in demo notebook
+   - `pip install jupyter`
+   - Run `jupyter notebook`
+   - Open demo notebook (add link)
 
 *Note the current widgets are not compatible with JupyterLab, so please use the conventional jupyter notebook*
 
-
-We have prepopulated the database with the public [Twitter US Airline Sentiment](https://www.kaggle.com/crowdflower/twitter-airline-sentiment), created a schema to collect "postive", "negative" and "netural" classification labels and "pos" or "neg" span labels. We also set [sentence bert](https://huggingface.co/sentence-transformers) vector embeddings for all data points. To avoid inconsitencies, we turn off access for project managment functionalites like importing data, changing schema and setting metadata in this public demo.
+We have prepopulated the database with the public [Twitter US Airline Sentiment](https://www.kaggle.com/crowdflower/twitter-airline-sentiment), created a schema to collect "postive", "negative" and "netural" classification labels and "pos" or "neg" span labels.
 
 Then follow the instructions in the notebook and happy exploring!
 
 
-Stay tuned for the public release for the toolkit for customized deployment where you can host your own service and databases.
 
 
-### Support or Contact
-
-Having trouble? contact us at {dan_z,hannah,rafael}@megagon.ai and we’ll be happy to help.
-
-If you are at EMNLP, stop by the Megagon Labs booth (exhibitor area #7) to speak with our lovely team members and check out a live demo!
