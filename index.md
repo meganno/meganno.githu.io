@@ -1,7 +1,7 @@
 ## Welcome to the MegAnno+ demo
 
 
-We provide a pip-installable client library and a demo notebook (add link). A Conda environment is strongly recommended; see below for instructions.
+We provide a pip-installable client library and a demo [notebook](https://github.com/meganno/labeler-client/blob/main/Examples/EACL-Demo.ipynb). A Conda environment is strongly recommended; see below for instructions.
 
 
 ## **Instructions**
@@ -20,13 +20,11 @@ We provide a pip-installable client library and a demo notebook (add link). A Co
 5. Explore in demo notebook
    - `pip install jupyter`
    - Run `jupyter notebook`
-   - Open demo notebook (add link)
+   - Open demo [notebook](https://github.com/meganno/labeler-client/blob/main/Examples/EACL-Demo.ipynb), follow the instructions in the notebook and happy exploring!
 
 *Note the current widgets are not compatible with JupyterLab, so please use the conventional jupyter notebook*
 
-We have prepopulated the database with the public [Twitter US Airline Sentiment](https://www.kaggle.com/crowdflower/twitter-airline-sentiment), created a schema to collect "postive", "negative" and "netural" classification labels and "pos" or "neg" span labels.
-
-Then follow the instructions in the notebook and happy exploring!
+We have prepopulated the database a natural language inference (NLI) dataset ([link](https://github.com/alisawuffles/wanli)).
 
 
 
