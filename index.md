@@ -10,8 +10,8 @@ We provide a pip-installable client library and a demo [notebook](https://github
    - Run `conda create -n <env_name> python=3.9`
    - Run `conda activate <env_name>`
 3. Install MegAnno+ libs (following development labeler-client and labeler-ui)
-    - Run `pip install "labeler_client[ui] @ git+ssh://git@github.com/rit-git/labeler-client.git"`
-    - Or run `pip install "labeler_client[ui] @ git+https://github.com/rit-git/labeler-client.git"`
+    - Run `pip install "labeler_client[ui] @ git+ssh://git@github.com/meganno/labeler-client.git"`
+    - Or run `pip install "labeler_client[ui] @ git+https://github.com/meganno/labeler-client.git"`
       - You may need to use [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) instead of password<br/>
 
 4. Set up OpenAI API Keys [using environment variables in place of your API key
