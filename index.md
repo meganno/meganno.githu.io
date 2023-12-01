@@ -1,10 +1,15 @@
 ## Welcome to the MegAnno+ demo
 
+## Demo Video
+{% include_relative video.html %}
+Demo video is available at [http://meganno.s3-website-us-east-1.amazonaws.com](http://meganno.s3-website-us-east-1.amazonaws.com).
+
+## Try it out!
 
 We provide a pip-installable client library and a demo [notebook](https://github.com/meganno/labeler-client/blob/main/Examples/EACL-Demo.ipynb). A Conda environment is strongly recommended; see below for instructions.
 
 
-## **Instructions**
+### **Instructions**
 1. Download [conda](https://conda.io/projects/conda/en/stable/user-guide/install/download.html)
 2. Create a conda environment
    - Run `conda create -n <env_name> python=3.9`
