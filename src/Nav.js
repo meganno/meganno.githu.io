@@ -4,9 +4,10 @@ import _ from "lodash";
 import eacl_logo from "./acl-logo.png";
 import { faIcon } from "./icon";
 import logo from "./logo.png";
-export default function Nav({ activePanel }) {
-    const setPath = (value) => {
-        window.location.pathname = `/${value}`;
+export default function Nav({ activePanel, setActivePanel }) {
+    const setPanel = (value) => {
+        window.location.hash = `#${value}`;
+        setActivePanel(value);
     };
     return (
         <div className="nav">
@@ -18,13 +19,13 @@ export default function Nav({ activePanel }) {
             </div>
             <Menu large style={{ padding: 0, marginTop: 15 }}>
                 <MenuItem
-                    onClick={() => setPath("quick-start")}
+                    onClick={() => setPanel("quick-start")}
                     active={_.isEqual(activePanel, "quick-start")}
                     icon={faIcon({ icon: faHome })}
                     text="Quick start"
                 />
                 <MenuItem
-                    onClick={() => setPath("eacl-2024")}
+                    onClick={() => setPanel("eacl-2024")}
                     active={_.isEqual(activePanel, "eacl-2024")}
                     icon={<img width={16} src={eacl_logo} />}
                     text="EACL 2024"

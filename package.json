@@ -1,7 +1,6 @@
 {
     "name": "meganno",
     "version": "0.1.0",
-    "private": true,
     "homepage": "https://meganno.github.io",
     "dependencies": {
         "@blueprintjs/core": "^5.10.0",

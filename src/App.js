@@ -9,9 +9,9 @@ FocusStyleManager.onlyShowFocusOnTabs();
 function App() {
     const [activePanel, setActivePanel] = useState("quick-start");
     useEffect(() => {
-        const pathname = window.location.pathname.split("/");
-        let panel = _.last(pathname);
-        if (_.isEmpty(panel)) {
+        const hash = window.location.hash;
+        let panel = hash.substring(hash.indexOf("#") + 1);
+        if (!_.includes(["quick-start", "eacl-2024"], panel)) {
             panel = "quick-start";
         }
         setActivePanel(panel);
@@ -37,7 +37,10 @@ function App() {
                         height: "100vh",
                     }}
                 >
-                    <Nav activePanel={activePanel} />
+                    <Nav
+                        activePanel={activePanel}
+                        setActivePanel={setActivePanel}
+                    />
                 </div>
             </div>
             <div
