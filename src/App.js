@@ -23,9 +23,18 @@ function App() {
                 margin: "auto",
                 flexDirection: "row",
                 maxWidth: 1100,
+                minHeight: "100vh",
             }}
         >
-            <div style={{ flexBasis: 270 }}>
+            <div
+                style={{
+                    flexBasis: 270,
+                    zIndex: 1,
+                    position: "relative",
+                    flexGrow: 0,
+                    flexShrink: 0,
+                }}
+            >
                 <div
                     style={{
                         position: "fixed",
@@ -43,24 +52,26 @@ function App() {
                     />
                 </div>
             </div>
-            <div
+            <main
                 style={{
                     flexGrow: 1,
                     flexShrink: 1,
                     flexBasis: 830,
-                    minHeight: "100vh",
+                    backgroundColor: "#f6f7f9",
+                    outline: "none",
                 }}
             >
                 <div
                     style={{
                         maxWidth: 830,
                         padding: "0 5px 40px 40px",
+                        position: "relative",
                     }}
                 >
                     {_.isEqual(activePanel, "quick-start") ? <Main /> : null}
                     {_.isEqual(activePanel, "eacl-2024") ? <Eacl /> : null}
                 </div>
-            </div>
+            </main>
         </div>
     );
 }
