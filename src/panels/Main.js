@@ -8,18 +8,19 @@ import {
     Intent,
     Pre,
 } from "@blueprintjs/core";
+import { isMobile } from "react-device-detect";
 import "../App.css";
 export default function Main() {
     return (
         <div>
-            <H1 style={{ margin: "40px 0 20px" }}>
+            <H1 style={{ margin: `${isMobile ? 30 : 40}px 0 20px` }}>
                 Welcome to the MegAnno demo
             </H1>
             <H4>Demo Video</H4>
             <video
                 src="https://meganno.s3.amazonaws.com/eacl-2024-demo.mp4"
                 controls="controls"
-                style={{ maxHeight: 429 }}
+                style={{ maxWidth: 567, width: "100%" }}
             />
             <Callout
                 icon={null}
@@ -54,7 +55,7 @@ export default function Main() {
                 </li>
                 <li>
                     <p>Create a conda environment</p>
-                    <Pre>
+                    <Pre style={{ overflowX: "auto" }}>
                         conda create -n &lt;env_name&gt; python=3.9
                         <br />
                         conda activate &lt;env_name&gt;
@@ -65,7 +66,7 @@ export default function Main() {
                         Install MegAnno libs (following development
                         labeler-client and labeler-ui)
                     </p>
-                    <Pre>
+                    <Pre style={{ overflowX: "auto" }}>
                         # run
                         <br />
                         pip install "labeler_client[ui] @
@@ -106,7 +107,7 @@ export default function Main() {
                 </li>
                 <li>
                     <p>Explore in demo notebook</p>
-                    <Pre>
+                    <Pre style={{ overflowX: "auto" }}>
                         pip install jupyter
                         <br />
                         jupyter notebook

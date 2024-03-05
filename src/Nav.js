@@ -3,7 +3,7 @@ import { faCopyright, faHome } from "@fortawesome/pro-duotone-svg-icons";
 import _ from "lodash";
 import eacl_logo from "./acl-logo.png";
 import { faIcon } from "./icon";
-import logo from "./logo.png";
+import logo_with_text from "./logo_with_text.png";
 export default function Nav({ activePanel, setActivePanel }) {
     const setPanel = (value) => {
         window.location.hash = `#${value}`;
@@ -11,7 +11,11 @@ export default function Nav({ activePanel, setActivePanel }) {
     };
     return (
         <div className="nav">
-            <img style={{ margin: "40px 0px 20px" }} width={172} src={logo} />
+            <img
+                style={{ margin: "40px 0px 20px" }}
+                width={172}
+                src={logo_with_text}
+            />
             <div>
                 <a target="_blank" href="https://github.com/meganno">
                     View on GitHub

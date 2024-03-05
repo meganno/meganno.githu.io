@@ -5,11 +5,13 @@
     "dependencies": {
         "@blueprintjs/core": "^5.10.0",
         "@fortawesome/fontawesome-svg-core": "^6.5.1",
+        "@fortawesome/free-brands-svg-icons": "^6.5.1",
         "@fortawesome/pro-duotone-svg-icons": "^6.5.1",
         "@fortawesome/react-fontawesome": "^0.2.0",
         "lodash": "^4.17.21",
         "normalize.css": "^8.0.1",
         "react": "^18.2.0",
+        "react-device-detect": "^2.2.3",
         "react-dom": "^18.2.0",
         "react-scripts": "5.0.1"
     },
