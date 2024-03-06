@@ -12,10 +12,8 @@ import { isMobile } from "react-device-detect";
 import "../App.css";
 export default function Main() {
     return (
-        <div>
-            <H1 style={{ margin: `${isMobile ? 30 : 40}px 0 20px` }}>
-                Welcome to the MegAnno demo
-            </H1>
+        <div style={{ marginTop: isMobile ? 30 : 40 }}>
+            <H1 style={{ marginBottom: 20 }}>Welcome to the MegAnno demo</H1>
             <H4>Demo Video</H4>
             <video
                 src="https://meganno.s3.amazonaws.com/eacl-2024-demo.mp4"

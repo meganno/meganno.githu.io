@@ -117,7 +117,11 @@ function App() {
                     </Navbar.Group>
                     <Navbar.Group align={Alignment.RIGHT}>
                         <a target="_blank" href="https://github.com/meganno">
-                            <Button minimal icon={faIcon({ icon: faGithub })} />
+                            <Button
+                                large
+                                minimal
+                                icon={faIcon({ icon: faGithub })}
+                            />
                         </a>
                         <Popover
                             minimal
@@ -147,7 +151,11 @@ function App() {
                                 </Menu>
                             }
                         >
-                            <Button minimal icon={faIcon({ icon: faBars })} />
+                            <Button
+                                large
+                                minimal
+                                icon={faIcon({ icon: faBars })}
+                            />
                         </Popover>
                     </Navbar.Group>
                 </Navbar>
@@ -162,6 +170,7 @@ function App() {
                     }}
                 >
                     {_.isEqual(activePanel, "quick-start") ? <Main /> : null}
+                    {_.isEqual(activePanel, "eacl-2024") ? <Eacl /> : null}
                 </div>
                 <div
                     style={{
