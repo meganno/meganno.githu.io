@@ -8,12 +8,14 @@ import {
     Pre,
     TextArea,
 } from "@blueprintjs/core";
-import { faInboxIn } from "@fortawesome/pro-duotone-svg-icons";
+import { faInboxOut } from "@fortawesome/pro-duotone-svg-icons";
+import axios from "axios";
 import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { Col, Row } from "react-grid-system";
 import { faIcon } from "../icon";
 import logo from "../logo_with_text_vertical.png";
+import { actionToaster, createToast } from "../toaster";
 export default function BlogPost() {
     const [width, setWidth] = useState(window.innerWidth);
     useEffect(() => {
@@ -23,6 +25,50 @@ export default function BlogPost() {
             window.removeEventListener("resize", handleResize);
         };
     }, []);
+    const [loading, setLoading] = useState(false);
+    const [heardFrom, setHeardFrom] = useState("");
+    const [useFor, setUseFor] = useState("");
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const clearForm = () => {
+        setHeardFrom("");
+        setUseFor("");
+        setName("");
+        setEmail("");
+    };
+    const handleSubmit = () => {
+        setLoading(true);
+        axios
+            .post(
+                "https://labeler.megagon.ai:3379/request_form",
+                {
+                    heard_from: heardFrom,
+                    use_for: useFor,
+                    name: name,
+                },
+                { params: { email: email, project: "blog_post" } }
+            )
+            .then(() => {
+                actionToaster.show(
+                    createToast({
+                        message: "Your request is under review",
+                        intent: Intent.SUCCESS,
+                    })
+                );
+                setLoading(false);
+                clearForm();
+            })
+            .catch(({ response }) => {
+                const data = _.get(response, "data", {});
+                actionToaster.show(
+                    createToast({
+                        message: JSON.stringify(data),
+                        intent: Intent.DANGER,
+                    })
+                );
+                setLoading(false);
+            });
+    };
     return (
         <div
             style={{
@@ -36,9 +82,9 @@ export default function BlogPost() {
                     maxWidth: "100vw",
                     margin: "auto",
                     width: 800,
-                    marginTop: width < 992 ? 105 : 0,
-                    paddingLeft: 50,
-                    paddingRight: 50,
+                    marginTop: width < 1200 ? 105 : 0,
+                    paddingLeft: 15,
+                    paddingRight: 15,
                 }}
             >
                 <H3 id="page-about-title" style={{ textAlign: "center" }}>
@@ -100,33 +146,70 @@ export default function BlogPost() {
                     Request Form
                 </H3>
                 <FormGroup label="Where did you hear about MEGAnno?">
-                    <InputGroup type="text" large />
+                    <InputGroup
+                        className={loading ? Classes.SKELETON : null}
+                        type="text"
+                        large
+                        value={heardFrom}
+                        onChange={(event) => {
+                            setHeardFrom(event.target.value);
+                        }}
+                    />
                 </FormGroup>
                 <FormGroup label="What will you be using it for?">
                     <TextArea
+                        className={loading ? Classes.SKELETON : null}
                         large
                         fill
-                        style={{ resize: "none" }}
+                        style={{ resize: "none", minHeight: 88 }}
                         autoResize
+                        value={useFor}
+                        onChange={(event) => {
+                            setUseFor(event.target.value);
+                        }}
                     />
                 </FormGroup>
                 <Row>
                     <Col xs={12} sm={6}>
                         <FormGroup label="Name">
-                            <InputGroup large type="text" />
+                            <InputGroup
+                                className={loading ? Classes.SKELETON : null}
+                                large
+                                type="text"
+                                value={name}
+                                onChange={(event) => {
+                                    setName(event.target.value);
+                                }}
+                            />
                         </FormGroup>
                     </Col>
                     <Col xs={12} sm={6}>
                         <FormGroup label="Email">
-                            <InputGroup large type="email" />
+                            <InputGroup
+                                className={loading ? Classes.SKELETON : null}
+                                large
+                                type="email"
+                                value={email}
+                                onChange={(event) => {
+                                    setEmail(event.target.value);
+                                }}
+                            />
                         </FormGroup>
                     </Col>
                 </Row>
-                <div style={{ display: "flex", justifyContent: "center" }}>
+                <div
+                    style={{
+                        marginTop: 15,
+                        display: "flex",
+                        justifyContent: "center",
+                    }}
+                >
                     <Button
-                        icon={faIcon({ icon: faInboxIn })}
+                        className={loading ? Classes.SKELETON : null}
+                        icon={faIcon({ icon: faInboxOut })}
                         intent={Intent.SUCCESS}
                         large
+                        onClick={handleSubmit}
                         text="Submit"
                     />
                 </div>

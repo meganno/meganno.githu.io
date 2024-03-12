@@ -41,7 +41,14 @@ function App() {
     };
     return (
         <div style={{ height: "100vh", overflow: "hidden" }}>
-            <Navbar fixedToTop style={{ position: "relative" }}>
+            <Navbar
+                fixedToTop
+                style={{
+                    position: "relative",
+                    paddingLeft: 50,
+                    paddingRight: 50,
+                }}
+            >
                 <Navbar.Group align={Alignment.LEFT}>
                     <Navbar.Heading>
                         <H3 style={{ margin: 0 }}>
@@ -49,7 +56,7 @@ function App() {
                         </H3>
                     </Navbar.Heading>
                 </Navbar.Group>
-                <Visible lg xl xxl xxxl>
+                <Visible xl xxl xxxl>
                     <div
                         style={{
                             position: "absolute",
@@ -61,7 +68,7 @@ function App() {
                         <PageSection />
                     </div>
                 </Visible>
-                <Visible xs sm md>
+                <Visible xs sm md lg>
                     <Card
                         elevation={3}
                         style={{
@@ -83,6 +90,7 @@ function App() {
                         content={
                             <Menu>
                                 <MenuItem
+                                    active={_.isEqual(activePage, "blog-post")}
                                     icon={faIcon({ icon: faNewspaper })}
                                     text="Blog Post"
                                     onClick={() => {
@@ -90,6 +98,7 @@ function App() {
                                     }}
                                 />
                                 <MenuItem
+                                    active={_.isEqual(activePage, "eacl-2024")}
                                     intent={Intent.DANGER}
                                     icon={<img width={16} src={eacl_logo} />}
                                     text="EACL 2024"

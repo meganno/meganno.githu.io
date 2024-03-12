@@ -7,12 +7,15 @@ import {
     Intent,
     Pre,
 } from "@blueprintjs/core";
-import { faInboxIn } from "@fortawesome/pro-duotone-svg-icons";
+import { faInboxOut } from "@fortawesome/pro-duotone-svg-icons";
+import axios from "axios";
 import classNames from "classnames";
+import _ from "lodash";
 import { useEffect, useState } from "react";
 import { Col, Row } from "react-grid-system";
 import { faIcon } from "../icon";
 import logo from "../logo_with_text_vertical.png";
+import { actionToaster, createToast } from "../toaster";
 export default function Eacl() {
     const [width, setWidth] = useState(window.innerWidth);
     useEffect(() => {
@@ -22,6 +25,51 @@ export default function Eacl() {
             window.removeEventListener("resize", handleResize);
         };
     }, []);
+    const [email, setEmail] = useState("");
+    const [invitationCode, setInvitationCode] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState({});
+    const handleSubmit = () => {
+        setLoading(true);
+        setError({});
+        axios
+            .get("https://labeler.megagon.ai:3379/request_token", {
+                params: {
+                    email: email,
+                    invitation_code: invitationCode,
+                    project: "eacl_demo",
+                },
+            })
+            .then(() => {
+                actionToaster.show(
+                    createToast({
+                        message: (
+                            <div>
+                                A token has been sent to your email account
+                                <br />
+                                Please follow the instruction in the email to
+                                continue
+                            </div>
+                        ),
+                        intent: Intent.SUCCESS,
+                    })
+                );
+                setEmail("");
+                setInvitationCode("");
+                setLoading(false);
+            })
+            .catch(({ response }) => {
+                const data = _.get(response, "data", {});
+                setError(data);
+                actionToaster.show(
+                    createToast({
+                        message: JSON.stringify(data),
+                        intent: Intent.DANGER,
+                    })
+                );
+                setLoading(false);
+            });
+    };
     return (
         <div
             style={{
@@ -35,9 +83,9 @@ export default function Eacl() {
                     maxWidth: "100vw",
                     margin: "auto",
                     width: 800,
-                    marginTop: width < 992 ? 105 : 0,
-                    paddingLeft: 50,
-                    paddingRight: 50,
+                    marginTop: width < 1200 ? 105 : 0,
+                    paddingLeft: 15,
+                    paddingRight: 15,
                 }}
             >
                 <H3 id="page-about-title" style={{ textAlign: "center" }}>
@@ -103,22 +151,66 @@ export default function Eacl() {
                 </H3>
                 <Row>
                     <Col xs={12} sm={6}>
-                        <FormGroup label="Name">
-                            <InputGroup large type="text" />
+                        <FormGroup
+                            label="Email"
+                            helperText={
+                                _.has(error, "email") ? error.email : null
+                            }
+                        >
+                            <InputGroup
+                                className={loading ? Classes.SKELETON : null}
+                                intent={
+                                    _.has(error, "email") ? Intent.DANGER : null
+                                }
+                                large
+                                type="email"
+                                value={email}
+                                onChange={(event) => {
+                                    setEmail(event.target.value);
+                                }}
+                            />
                         </FormGroup>
                     </Col>
                     <Col xs={12} sm={6}>
-                        <FormGroup label="Email">
-                            <InputGroup large type="email" />
+                        <FormGroup
+                            label="Invitation Code"
+                            helperText={
+                                _.has(error, "invitation_code")
+                                    ? error.invitation_code
+                                    : null
+                            }
+                        >
+                            <InputGroup
+                                className={loading ? Classes.SKELETON : null}
+                                intent={
+                                    _.has(error, "invitation_code")
+                                        ? Intent.DANGER
+                                        : null
+                                }
+                                large
+                                type="text"
+                                value={invitationCode}
+                                onChange={(event) => {
+                                    setInvitationCode(event.target.value);
+                                }}
+                            />
                         </FormGroup>
                     </Col>
                 </Row>
-                <div style={{ display: "flex", justifyContent: "center" }}>
+                <div
+                    style={{
+                        marginTop: 15,
+                        display: "flex",
+                        justifyContent: "center",
+                    }}
+                >
                     <Button
-                        icon={faIcon({ icon: faInboxIn })}
+                        className={loading ? Classes.SKELETON : null}
+                        icon={faIcon({ icon: faInboxOut })}
                         intent={Intent.SUCCESS}
                         large
                         text="Submit"
+                        onClick={handleSubmit}
                     />
                 </div>
                 <H3 style={{ textAlign: "center" }}>Resource</H3>
