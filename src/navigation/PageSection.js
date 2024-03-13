@@ -1,15 +1,6 @@
 import { Button, ButtonGroup } from "@blueprintjs/core";
+import { scrollIntoViewWithOffset } from "../constant";
 export default function () {
-    const scrollIntoViewWithOffset = (selector) => {
-        document.querySelector(".page-scroll-area").scrollTo({
-            behavior: "smooth",
-            top:
-                document.querySelector(selector).offsetTop -
-                40 -
-                65 -
-                (window.innerWidth < 1200 ? 65 : 0),
-        });
-    };
     return (
         <ButtonGroup minimal fill>
             <Button

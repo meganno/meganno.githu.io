@@ -6,12 +6,13 @@ import {
     InputGroup,
     Intent,
 } from "@blueprintjs/core";
-import { faInboxOut } from "@fortawesome/pro-duotone-svg-icons";
+import { faInboxIn, faInboxOut } from "@fortawesome/pro-duotone-svg-icons";
 import axios from "axios";
 import classNames from "classnames";
 import _ from "lodash";
 import { useEffect, useState } from "react";
 import { Col, Row } from "react-grid-system";
+import { scrollIntoViewWithOffset } from "../constant";
 import { faIcon } from "../icon";
 import logo from "../logo_with_text_vertical.png";
 import { actionToaster, createToast } from "../toaster";
@@ -43,7 +44,18 @@ export default function Eacl() {
             .then(() => {
                 actionToaster.show(
                     createToast({
-                        message: "A token has been sent to your email account.",
+                        icon: faInboxIn,
+                        message: (
+                            <div>
+                                <p>
+                                    A token has been sent to your email account.
+                                </p>
+                                <p>
+                                    Please check your spam or junk folder if you
+                                    cannot find the email in your inbox.
+                                </p>
+                            </div>
+                        ),
                         intent: Intent.SUCCESS,
                     })
                 );
@@ -102,7 +114,15 @@ export default function Eacl() {
                     OpenAI API key
                 </a>
                 , and a MEGAnno access token (you can get this by filling out
-                the request form below).
+                the{" "}
+                <a
+                    onClick={() => {
+                        scrollIntoViewWithOffset("#page-request-form-title");
+                    }}
+                >
+                    request form
+                </a>{" "}
+                below).
                 <ol>
                     <li>
                         <p>

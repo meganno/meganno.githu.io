@@ -7,13 +7,13 @@ import {
     Intent,
     TextArea,
 } from "@blueprintjs/core";
-import { faInboxOut } from "@fortawesome/pro-duotone-svg-icons";
+import { faInboxOut, faPartyHorn } from "@fortawesome/pro-duotone-svg-icons";
 import axios from "axios";
 import classNames from "classnames";
 import _ from "lodash";
 import { useEffect, useState } from "react";
 import { Col, Row } from "react-grid-system";
-import { validateEmail } from "../constant";
+import { scrollIntoViewWithOffset, validateEmail } from "../constant";
 import { faIcon } from "../icon";
 import logo from "../logo_with_text_vertical.png";
 import { actionToaster, createToast } from "../toaster";
@@ -72,8 +72,21 @@ export default function BlogPost() {
             .then(() => {
                 actionToaster.show(
                     createToast({
-                        message:
-                            "Your request is under review. Thanks for applying!",
+                        icon: faPartyHorn,
+                        message: (
+                            <div>
+                                <p>
+                                    Your request is under review and when it is
+                                    approved a token will be sent to your email
+                                    account.
+                                </p>
+                                <p>
+                                    Please check your spam or junk folder if you
+                                    cannot find the email in your inbox.
+                                </p>
+                                <p>Thanks for applying!</p>
+                            </div>
+                        ),
                         intent: Intent.SUCCESS,
                     })
                 );
@@ -131,7 +144,15 @@ export default function BlogPost() {
                     OpenAI API key
                 </a>
                 , and a MEGAnno access token (you can get this by filling out
-                the request form below).
+                the{" "}
+                <a
+                    onClick={() => {
+                        scrollIntoViewWithOffset("#page-request-form-title");
+                    }}
+                >
+                    request form
+                </a>{" "}
+                below).
                 <ol>
                     <li>
                         <p>
