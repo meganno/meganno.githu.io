@@ -5,7 +5,6 @@ import {
     H3,
     InputGroup,
     Intent,
-    Pre,
 } from "@blueprintjs/core";
 import { faInboxOut } from "@fortawesome/pro-duotone-svg-icons";
 import axios from "axios";
@@ -16,6 +15,7 @@ import { Col, Row } from "react-grid-system";
 import { faIcon } from "../icon";
 import logo from "../logo_with_text_vertical.png";
 import { actionToaster, createToast } from "../toaster";
+import About from "./About";
 export default function Eacl() {
     const [width, setWidth] = useState(window.innerWidth);
     useEffect(() => {
@@ -81,59 +81,94 @@ export default function Eacl() {
                     paddingRight: 15,
                 }}
             >
-                <H3 id="page-about-title" style={{ textAlign: "center" }}>
-                    About
-                </H3>
-                <div>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Facilisi nullam vehicula ipsum a arcu cursus vitae
-                    congue mauris. Eget mauris pharetra et ultrices neque.
-                    Semper auctor neque vitae tempus quam. Laoreet suspendisse
-                    interdum consectetur libero id faucibus nisl tincidunt. Urna
-                    duis convallis convallis tellus id. Sit amet commodo nulla
-                    facilisi nullam vehicula ipsum a. Dignissim enim sit amet
-                    venenatis urna cursus eget nunc. Pretium quam vulputate
-                    dignissim suspendisse in est ante. Nibh ipsum consequat nisl
-                    vel pretium lectus quam id. Nulla posuere sollicitudin
-                    aliquam ultrices sagittis orci a scelerisque. Et netus et
-                    malesuada fames ac turpis. In hac habitasse platea dictumst.
-                    Sit amet purus gravida quis blandit turpis. Nisl vel pretium
-                    lectus quam id leo in vitae. Odio euismod lacinia at quis
-                    risus sed vulputate odio. Pulvinar neque laoreet suspendisse
-                    interdum consectetur. Aliquam faucibus purus in massa tempor
-                    nec. Vulputate ut pharetra sit amet.
-                </div>
+                <About />
                 <H3 id="page-instruction-title" style={{ textAlign: "center" }}>
                     Instruction
                 </H3>
-                <a target="_blank" href="https://github.com/meganno">
-                    View on GitHub
+                For your convenience, we prepared a{" "}
+                <a
+                    href="https://colab.research.google.com/drive/1SAlH1QPvxqRt5AXTTa7i5bvU8SFFA1tz?usp=sharing"
+                    target="_blank"
+                >
+                    Google Colab notebook
+                </a>{" "}
+                for this demo. To run the Colab notebook, you’ll need a Google
+                account, an{" "}
+                <a
+                    target="_blank"
+                    href="https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key"
+                >
+                    OpenAI API key
                 </a>
+                , and a MEGAnno access token (you can get this by filling out
+                the request form below).
                 <ol>
                     <li>
                         <p>
-                            In arcu cursus euismod quis. Vel eros donec ac odio
-                            tempor orci dapibus. Sollicitudin ac orci phasellus
-                            egestas tellus rutrum tellus pellentesque. Sem
-                            integer vitae justo eget magna fermentum. Tellus
-                            molestie nunc non blandit massa enim nec dui nunc.
-                            Phasellus egestas tellus rutrum tellus pellentesque
-                            eu tincidunt tortor. Nunc mattis enim ut tellus
-                            elementum sagittis vitae et. Ut tortor pretium
-                            viverra suspendisse. Et ligula ullamcorper malesuada
-                            proin libero nunc consequat. In nibh mauris cursus
-                            mattis. Orci sagittis eu volutpat odio facilisis
-                            mauris.
-                        </p>
-                        <Pre style={{ overflowX: "auto" }}>
-                            Facilisis gravida neque convallis a cras semper
-                            auctor. Justo laoreet sit amet cursus sit amet
-                            dictum.
+                            Click the link below to access the demo notebook.
                             <br />
-                            Hac habitasse platea dictumst quisque sagittis
-                            purus. Magna eget est lorem ipsum dolor.
-                        </Pre>
+                            <a
+                                href="https://colab.research.google.com/drive/1SAlH1QPvxqRt5AXTTa7i5bvU8SFFA1tz?usp=sharing"
+                                target="_blank"
+                            >
+                                <Button
+                                    icon={
+                                        <svg
+                                            style={{ height: 32 }}
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <g id="colab-logo">
+                                                <path
+                                                    d="M4.54,9.46,2.19,7.1a6.93,6.93,0,0,0,0,9.79l2.36-2.36A3.59,3.59,0,0,1,4.54,9.46Z"
+                                                    style={{ fill: "#e8710a" }}
+                                                />
+                                                <path
+                                                    d="M2.19,7.1,4.54,9.46a3.59,3.59,0,0,1,5.08,0l1.71-2.93h0l-.1-.08h0A6.93,6.93,0,0,0,2.19,7.1Z"
+                                                    style={{ fill: "#f9ab00" }}
+                                                />
+                                                <path
+                                                    d="M11.34,17.46h0L9.62,14.54a3.59,3.59,0,0,1-5.08,0L2.19,16.9a6.93,6.93,0,0,0,9,.65l.11-.09"
+                                                    style={{ fill: "#f9ab00" }}
+                                                />
+                                                <path
+                                                    d="M12,7.1a6.93,6.93,0,0,0,0,9.79l2.36-2.36a3.59,3.59,0,1,1,5.08-5.08L21.81,7.1A6.93,6.93,0,0,0,12,7.1Z"
+                                                    style={{ fill: "#f9ab00" }}
+                                                />
+                                                <path
+                                                    d="M21.81,7.1,19.46,9.46a3.59,3.59,0,0,1-5.08,5.08L12,16.9A6.93,6.93,0,0,0,21.81,7.1Z"
+                                                    style={{ fill: "#e8710a" }}
+                                                />
+                                            </g>
+                                        </svg>
+                                    }
+                                    large
+                                    outlined
+                                    text="MEGAnno EACL24 Demo.ipynb"
+                                />
+                            </a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Follow the steps in the notebook. You need to log in
+                            with your Google account to run this demo.
+                        </p>
+                        <ol type="a">
+                            <li>
+                                Note: You can run the notebook as is without
+                                saving any changes. If you’d like to make
+                                changes, we suggest you make a copy of the
+                                notebook.
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        When asked, provide your OpenAI API key and MEGAnno
+                        token in the notebook cell.
+                    </li>
+                    <li>
+                        Enjoy! Please let us know if you have any feedback or
+                        suggestions.
                     </li>
                 </ol>
                 <H3

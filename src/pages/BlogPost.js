@@ -1,35 +1,23 @@
 import {
     Button,
-    Card,
     Classes,
     FormGroup,
     H3,
-    H4,
     InputGroup,
     Intent,
-    Pre,
     TextArea,
-    Tooltip,
 } from "@blueprintjs/core";
-import {
-    faCircle1,
-    faCircle2,
-    faCopy,
-    faInboxOut,
-    faTrophy,
-} from "@fortawesome/pro-duotone-svg-icons";
+import { faInboxOut } from "@fortawesome/pro-duotone-svg-icons";
 import axios from "axios";
 import classNames from "classnames";
-import copy from "copy-to-clipboard";
 import _ from "lodash";
 import { useEffect, useState } from "react";
 import { Col, Row } from "react-grid-system";
 import { validateEmail } from "../constant";
 import { faIcon } from "../icon";
 import logo from "../logo_with_text_vertical.png";
-import figure1 from "../meganno_site_fig1.png";
-import figure2 from "../meganno_site_fig2.png";
 import { actionToaster, createToast } from "../toaster";
+import About from "./About";
 export default function BlogPost() {
     const [width, setWidth] = useState(window.innerWidth);
     useEffect(() => {
@@ -44,25 +32,6 @@ export default function BlogPost() {
     const [useFor, setUseFor] = useState("");
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const citaton_1 = `@inproceedings{meganno-plus,
-    title = "{MEGA}nno+: A Human-{LLM} Collaborative Annotation System",
-    author = "Kim, Hannah and Mitra, Kushan and Li Chen, Rafael and Rahman, Sajjadur and Zhang, Dan",
-    booktitle = "Proceedings of the 18th Conference of the European Chapter of the Association for Computational Linguistics: System Demonstrations",
-    year = "2024",
-    publisher = "Association for Computational Linguistics",
-}`;
-    const citation_2 = `@inproceedings{zhang-etal-2022-meganno,
-    title = "{MEGA}nno: Exploratory Labeling for {NLP} in Computational Notebooks",
-    author = "Zhang, Dan and Kim, Hannah and Li Chen, Rafael and Kandogan, Eser and Hruschka, Estevam",
-    editor = "Dragut, Eduard and Li, Yunyao and Popa, Lucian and Vucetic, Slobodan and Srivastava, Shashank",
-    booktitle = "Proceedings of the Fourth Workshop on Data Science with Human-in-the-Loop (Language Advances)",
-    month = dec,
-    year = "2022",
-    address = "Abu Dhabi, United Arab Emirates (Hybrid)",
-    publisher = "Association for Computational Linguistics",
-    url = "https://aclanthology.org/2022.dash-1.1",
-    pages = "1--7",
-}`;
     const clearForm = () => {
         setHeardFrom("");
         setUseFor("");
@@ -141,166 +110,94 @@ export default function BlogPost() {
                     paddingRight: 15,
                 }}
             >
-                <H3 id="page-about-title" style={{ textAlign: "center" }}>
-                    About
-                </H3>
-                <H4 className={Classes.TEXT_MUTED}>What is MEGAnno?</H4>
-                <p>
-                    MEGAnno is a human-LLM collaborative annotation framework.
-                    For cost-efficient and high-quality annotation, we adopt the
-                    LLM annotation → Human verification workflow where LLM
-                    agents label data first and then humans verify a subset of
-                    potentially problematic LLM labels.
-                </p>
-                <Card style={{ padding: 0, overflow: "hidden" }}>
-                    <img width="100%" src={figure1} />
-                </Card>
-                <p>
-                    <i>Figure 1. Our human-LLM collaborative workflow.</i>
-                </p>
-                <br />
-                Our features include:
-                <ul>
-                    <li>Effective LLM agent and annotation management</li>
-                    <li>Convenient and robust LLM annotation</li>
-                    <li>
-                        Exploration and verification of LLM labels by humans
-                    </li>
-                    <li>
-                        Seamless annotation experience within Jupyter notebooks
-                    </li>
-                </ul>
-                <H4 className={Classes.TEXT_MUTED}>System Overview</H4>
-                <p>
-                    MEGAnno provides two key components:{" "}
-                    {faIcon({ icon: faCircle1 })} a Python client library
-                    featuring interactive widgets and{" "}
-                    {faIcon({ icon: faCircle2 })} a back-end service consisting
-                    of web API and database servers. To use our system, a user
-                    can interact with a Jupyter Notebook that has the MEGAnno
-                    demo client installed. Through programmatic interfaces and
-                    UI widgets, the demo client communicates with the demo
-                    service.
-                </p>
-                <Card style={{ padding: 0, overflow: "hidden" }}>
-                    <img width="100%" src={figure2} />
-                </Card>
-                <p>
-                    <i>Figure 2. Overview of MEGAnno+ system.</i>
-                </p>
-                <H4 className={Classes.TEXT_MUTED}>Demo</H4>
-                <p>
-                    This demo allows you to try out our system on Google Colab
-                    using an example dataset and labeling task. We plan to
-                    release a full open-sourced version shortly after, so stay
-                    tuned. For more information, please check out our EACL 2024
-                    demo paper below:
-                </p>
-                <div>
-                    <a target="_blank" href="https://arxiv.org/abs/2402.18050">
-                        MEGAnno+: A Human-LLM Collaborative Annotation System
-                    </a>
-                    <p>
-                        Hannah Kim, Kushan Mitra, Rafael Li Chen, Sajjadur
-                        Rahman, Dan Zhang
-                        <br />
-                        EACL 2024 Demo
-                    </p>
-                </div>
-                <Tooltip
-                    placement="bottom-start"
-                    content={
-                        <Pre style={{ width: 500, overflow: "hidden" }}>
-                            {citaton_1}
-                        </Pre>
-                    }
-                >
-                    <Button
-                        icon={faIcon({ icon: faCopy })}
-                        outlined
-                        onClick={() => {
-                            copy(citaton_1);
-                        }}
-                        text={
-                            <div>
-                                Cite our paper&nbsp;
-                                <span className={Classes.TEXT_MUTED}>
-                                    (click to copy)
-                                </span>
-                            </div>
-                        }
-                    />
-                </Tooltip>
-                <div style={{ marginTop: 20 }}>
-                    <a
-                        target="_blank"
-                        href="https://aclanthology.org/2022.dash-1.1/"
-                    >
-                        MEGAnno: Exploratory Labeling for NLP in Computational
-                        Notebooks
-                    </a>
-                    <p>
-                        Dan Zhang, Hannah Kim, Rafael Li Chen, Eser Kandogan,
-                        Estevam Hruschka
-                        <br />
-                        DaSH Workshop @ EMNLP 2022, Best paper award&nbsp;
-                        {faIcon({
-                            icon: faTrophy,
-                            style: { color: "#D1980B" },
-                        })}
-                    </p>
-                </div>
-                <Tooltip
-                    placement="bottom-start"
-                    content={
-                        <Pre style={{ width: 500, overflow: "hidden" }}>
-                            {citation_2}
-                        </Pre>
-                    }
-                >
-                    <Button
-                        icon={faIcon({ icon: faCopy })}
-                        outlined
-                        onClick={() => {
-                            copy(citation_2);
-                        }}
-                        text={
-                            <div>
-                                Cite our paper&nbsp;
-                                <span className={Classes.TEXT_MUTED}>
-                                    (click to copy)
-                                </span>
-                            </div>
-                        }
-                    />
-                </Tooltip>
+                <About />
                 <H3 id="page-instruction-title" style={{ textAlign: "center" }}>
                     Instruction
                 </H3>
+                For your convenience, we prepared a{" "}
+                <a
+                    href="https://colab.research.google.com/drive/1kaKfPSJm0ztCzXHNhvzizo3OgsnlBgPz?usp=sharing"
+                    target="_blank"
+                >
+                    Google Colab notebook
+                </a>{" "}
+                for this demo. To run the Colab notebook, you’ll need a Google
+                account, an{" "}
+                <a
+                    target="_blank"
+                    href="https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key"
+                >
+                    OpenAI API key
+                </a>
+                , and a MEGAnno access token (you can get this by filling out
+                the request form below).
                 <ol>
                     <li>
                         <p>
-                            In arcu cursus euismod quis. Vel eros donec ac odio
-                            tempor orci dapibus. Sollicitudin ac orci phasellus
-                            egestas tellus rutrum tellus pellentesque. Sem
-                            integer vitae justo eget magna fermentum. Tellus
-                            molestie nunc non blandit massa enim nec dui nunc.
-                            Phasellus egestas tellus rutrum tellus pellentesque
-                            eu tincidunt tortor. Nunc mattis enim ut tellus
-                            elementum sagittis vitae et. Ut tortor pretium
-                            viverra suspendisse. Et ligula ullamcorper malesuada
-                            proin libero nunc consequat. In nibh mauris cursus
-                            mattis. Orci sagittis eu volutpat odio facilisis
-                            mauris.
-                        </p>
-                        <Pre style={{ overflowX: "auto" }}>
-                            Facilisis gravida neque convallis a cras semper
-                            auctor. Justo laoreet sit amet cursus sit amet
-                            dictum.
+                            Click the link below to access the demo notebook.
                             <br />
-                            Hac habitasse platea dictumst quisque sagittis
-                            purus. Magna eget est lorem ipsum dolor.
-                        </Pre>
+                            <a
+                                href="https://colab.research.google.com/drive/1kaKfPSJm0ztCzXHNhvzizo3OgsnlBgPz?usp=sharing"
+                                target="_blank"
+                            >
+                                <Button
+                                    icon={
+                                        <svg
+                                            style={{ height: 32 }}
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <g id="colab-logo">
+                                                <path
+                                                    d="M4.54,9.46,2.19,7.1a6.93,6.93,0,0,0,0,9.79l2.36-2.36A3.59,3.59,0,0,1,4.54,9.46Z"
+                                                    style={{ fill: "#e8710a" }}
+                                                />
+                                                <path
+                                                    d="M2.19,7.1,4.54,9.46a3.59,3.59,0,0,1,5.08,0l1.71-2.93h0l-.1-.08h0A6.93,6.93,0,0,0,2.19,7.1Z"
+                                                    style={{ fill: "#f9ab00" }}
+                                                />
+                                                <path
+                                                    d="M11.34,17.46h0L9.62,14.54a3.59,3.59,0,0,1-5.08,0L2.19,16.9a6.93,6.93,0,0,0,9,.65l.11-.09"
+                                                    style={{ fill: "#f9ab00" }}
+                                                />
+                                                <path
+                                                    d="M12,7.1a6.93,6.93,0,0,0,0,9.79l2.36-2.36a3.59,3.59,0,1,1,5.08-5.08L21.81,7.1A6.93,6.93,0,0,0,12,7.1Z"
+                                                    style={{ fill: "#f9ab00" }}
+                                                />
+                                                <path
+                                                    d="M21.81,7.1,19.46,9.46a3.59,3.59,0,0,1-5.08,5.08L12,16.9A6.93,6.93,0,0,0,21.81,7.1Z"
+                                                    style={{ fill: "#e8710a" }}
+                                                />
+                                            </g>
+                                        </svg>
+                                    }
+                                    large
+                                    outlined
+                                    text="MEGAnno Blogpost Demo.ipynb"
+                                />
+                            </a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Follow the steps in the notebook. You need to log in
+                            with your Google account to run this demo.
+                        </p>
+                        <ol type="a">
+                            <li>
+                                Note: You can run the notebook as is without
+                                saving any changes. If you’d like to make
+                                changes, we suggest you make a copy of the
+                                notebook.
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        When asked, provide your OpenAI API key and MEGAnno
+                        token in the notebook cell.
+                    </li>
+                    <li>
+                        Enjoy! Please let us know if you have any feedback or
+                        suggestions.
                     </li>
                 </ol>
                 <H3
