@@ -1,34 +1,36 @@
 {
   "files": {
     "main.css": "/static/css/main.65a58cf9.css",
-    "main.js": "/static/js/main.d1ebd434.js",
-    "blueprint-icons-all-paths-loader.js": "/static/js/blueprint-icons-all-paths-loader.a653a0ee.chunk.js",
-    "blueprint-icons-split-paths-by-size-loader.js": "/static/js/blueprint-icons-split-paths-by-size-loader.a92678ab.chunk.js",
-    "blueprint-icons-all-paths.js": "/static/js/blueprint-icons-all-paths.a628e857.chunk.js",
+    "main.js": "/static/js/main.27e83527.js",
+    "blueprint-icons-all-paths-loader.js": "/static/js/blueprint-icons-all-paths-loader.49e268a7.chunk.js",
+    "blueprint-icons-split-paths-by-size-loader.js": "/static/js/blueprint-icons-split-paths-by-size-loader.7c505f8a.chunk.js",
+    "blueprint-icons-all-paths.js": "/static/js/blueprint-icons-all-paths.355c7814.chunk.js",
     "blueprint-icons-16px-paths.js": "/static/js/blueprint-icons-16px-paths.bfbc4819.chunk.js",
-    "blueprint-icons-20px-paths.js": "/static/js/blueprint-icons-20px-paths.337c9c14.chunk.js",
+    "blueprint-icons-20px-paths.js": "/static/js/blueprint-icons-20px-paths.dcace4b8.chunk.js",
     "static/media/blueprint-icons-20.svg?": "/static/media/blueprint-icons-20.d88a63077f860dcdc462.svg",
     "static/media/blueprint-icons-16.svg?": "/static/media/blueprint-icons-16.e4266feaa7bddbb0a028.svg",
     "static/media/logo_with_text_vertical.png": "/static/media/logo_with_text_vertical.4f46fc1e7d368acf5ebb.png",
+    "static/media/meganno_site_fig2.png": "/static/media/meganno_site_fig2.6b6830cb46503aecfa45.png",
     "static/media/blueprint-icons-20.eot?": "/static/media/blueprint-icons-20.5ebd7842b3a5a6e8ba88.eot",
     "static/media/blueprint-icons-20.ttf?": "/static/media/blueprint-icons-20.51064a72549df3e8e571.ttf",
     "static/media/blueprint-icons-16.eot?": "/static/media/blueprint-icons-16.d429e29b3a91f3bbf59e.eot",
     "static/media/blueprint-icons-16.ttf?": "/static/media/blueprint-icons-16.f0bf71bdf41fa4c23275.ttf",
+    "static/media/meganno_site_fig1.png": "/static/media/meganno_site_fig1.a69db5b0f18d1fc38fb6.png",
     "static/media/blueprint-icons-20.woff?": "/static/media/blueprint-icons-20.e41361203412efca01af.woff",
     "static/media/blueprint-icons-16.woff?": "/static/media/blueprint-icons-16.3d672dc1bb9d17d6f912.woff",
     "static/media/blueprint-icons-20.woff2?": "/static/media/blueprint-icons-20.85fabb9cc020825206e2.woff2",
     "static/media/blueprint-icons-16.woff2?": "/static/media/blueprint-icons-16.1d6152e098d0086af54a.woff2",
     "index.html": "/index.html",
     "main.65a58cf9.css.map": "/static/css/main.65a58cf9.css.map",
-    "main.d1ebd434.js.map": "/static/js/main.d1ebd434.js.map",
-    "blueprint-icons-all-paths-loader.a653a0ee.chunk.js.map": "/static/js/blueprint-icons-all-paths-loader.a653a0ee.chunk.js.map",
-    "blueprint-icons-split-paths-by-size-loader.a92678ab.chunk.js.map": "/static/js/blueprint-icons-split-paths-by-size-loader.a92678ab.chunk.js.map",
-    "blueprint-icons-all-paths.a628e857.chunk.js.map": "/static/js/blueprint-icons-all-paths.a628e857.chunk.js.map",
+    "main.27e83527.js.map": "/static/js/main.27e83527.js.map",
+    "blueprint-icons-all-paths-loader.49e268a7.chunk.js.map": "/static/js/blueprint-icons-all-paths-loader.49e268a7.chunk.js.map",
+    "blueprint-icons-split-paths-by-size-loader.7c505f8a.chunk.js.map": "/static/js/blueprint-icons-split-paths-by-size-loader.7c505f8a.chunk.js.map",
+    "blueprint-icons-all-paths.355c7814.chunk.js.map": "/static/js/blueprint-icons-all-paths.355c7814.chunk.js.map",
     "blueprint-icons-16px-paths.bfbc4819.chunk.js.map": "/static/js/blueprint-icons-16px-paths.bfbc4819.chunk.js.map",
-    "blueprint-icons-20px-paths.337c9c14.chunk.js.map": "/static/js/blueprint-icons-20px-paths.337c9c14.chunk.js.map"
+    "blueprint-icons-20px-paths.dcace4b8.chunk.js.map": "/static/js/blueprint-icons-20px-paths.dcace4b8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.65a58cf9.css",
-    "static/js/main.d1ebd434.js"
+    "static/js/main.27e83527.js"
   ]
 }
