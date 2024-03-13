@@ -78,7 +78,8 @@ export default function BlogPost() {
                                 <p>
                                     Your request is under review and when it is
                                     approved a token will be sent to your email
-                                    account.
+                                    account (will usually be processed within 2
+                                    business days).
                                 </p>
                                 <p>
                                     Please check your spam or junk folder if you
