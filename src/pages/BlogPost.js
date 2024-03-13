@@ -96,6 +96,7 @@ export default function BlogPost() {
         <div
             style={{
                 height: "calc(100vh - 50px)",
+                width: "100%",
                 overflowY: "auto",
             }}
             className={classNames(Classes.RUNNING_TEXT, "page-scroll-area")}
