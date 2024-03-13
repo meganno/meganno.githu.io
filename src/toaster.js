@@ -4,7 +4,7 @@ import { faIcon } from "./icon";
 export const actionToaster =
     typeof window !== "undefined"
         ? Toaster.create({
-              position: Position.BOTTOM,
+              position: Position.BOTTOM_LEFT,
           })
         : null;
 export const createToast = (toast, theme = "") => ({

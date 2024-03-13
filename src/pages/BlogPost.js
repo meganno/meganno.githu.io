@@ -1,20 +1,32 @@
 import {
     Button,
+    Card,
     Classes,
     FormGroup,
     H3,
+    H4,
     InputGroup,
     Intent,
     Pre,
     TextArea,
+    Tooltip,
 } from "@blueprintjs/core";
-import { faInboxOut } from "@fortawesome/pro-duotone-svg-icons";
+import {
+    faCircle1,
+    faCircle2,
+    faCopy,
+    faInboxOut,
+    faTrophy,
+} from "@fortawesome/pro-duotone-svg-icons";
 import axios from "axios";
 import classNames from "classnames";
+import copy from "copy-to-clipboard";
 import { useEffect, useState } from "react";
 import { Col, Row } from "react-grid-system";
 import { faIcon } from "../icon";
 import logo from "../logo_with_text_vertical.png";
+import figure1 from "../meganno_site_fig1.png";
+import figure2 from "../meganno_site_fig2.png";
 import { actionToaster, createToast } from "../toaster";
 export default function BlogPost() {
     const [width, setWidth] = useState(window.innerWidth);
@@ -30,6 +42,25 @@ export default function BlogPost() {
     const [useFor, setUseFor] = useState("");
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
+    const citaton_1 = `@inproceedings{meganno-plus,
+    title = "{MEGA}nno+: A Human-{LLM} Collaborative Annotation System",
+    author = "Kim, Hannah and Mitra, Kushan and Li Chen, Rafael and Rahman, Sajjadur and Zhang, Dan",
+    booktitle = "Proceedings of the 18th Conference of the European Chapter of the Association for Computational Linguistics: System Demonstrations",
+    year = "2024",
+    publisher = "Association for Computational Linguistics",
+}`;
+    const citation_2 = `@inproceedings{zhang-etal-2022-meganno,
+    title = "{MEGA}nno: Exploratory Labeling for {NLP} in Computational Notebooks",
+    author = "Zhang, Dan and Kim, Hannah and Li Chen, Rafael and Kandogan, Eser and Hruschka, Estevam",
+    editor = "Dragut, Eduard and Li, Yunyao and Popa, Lucian and Vucetic, Slobodan and Srivastava, Shashank",
+    booktitle = "Proceedings of the Fourth Workshop on Data Science with Human-in-the-Loop (Language Advances)",
+    month = dec,
+    year = "2022",
+    address = "Abu Dhabi, United Arab Emirates (Hybrid)",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2022.dash-1.1",
+    pages = "1--7",
+}`;
     const clearForm = () => {
         setHeardFrom("");
         setUseFor("");
@@ -51,7 +82,7 @@ export default function BlogPost() {
             .then(() => {
                 actionToaster.show(
                     createToast({
-                        message: "Your request is under review",
+                        message: "Your request is under review.",
                         intent: Intent.SUCCESS,
                     })
                 );
@@ -90,26 +121,136 @@ export default function BlogPost() {
                 <H3 id="page-about-title" style={{ textAlign: "center" }}>
                     About
                 </H3>
+                <H4 className={Classes.TEXT_MUTED}>What is MEGAnno?</H4>
+                <p>
+                    MEGAnno is a human-LLM collaborative annotation framework.
+                    For cost-efficient and high-quality annotation, we adopt the
+                    LLM annotation → Human verification workflow where LLM
+                    agents label data first and then humans verify a subset of
+                    potentially problematic LLM labels.
+                </p>
+                <Card style={{ padding: 0, overflow: "hidden" }}>
+                    <img width="100%" src={figure1} />
+                </Card>
+                <p>
+                    <i>Figure 1. Our human-LLM collaborative workflow.</i>
+                </p>
+                <br />
+                Our features include:
+                <ul>
+                    <li>Effective LLM agent and annotation management</li>
+                    <li>Convenient and robust LLM annotation</li>
+                    <li>
+                        Exploration and verification of LLM labels by humans
+                    </li>
+                    <li>
+                        Seamless annotation experience within Jupyter notebooks
+                    </li>
+                </ul>
+                <H4 className={Classes.TEXT_MUTED}>System Overview</H4>
+                <p>
+                    MEGAnno provides two key components:{" "}
+                    {faIcon({ icon: faCircle1 })} a Python client library
+                    featuring interactive widgets and{" "}
+                    {faIcon({ icon: faCircle2 })} a back-end service consisting
+                    of web API and database servers. To use our system, a user
+                    can interact with a Jupyter Notebook that has the MEGAnno
+                    demo client installed. Through programmatic interfaces and
+                    UI widgets, the demo client communicates with the demo
+                    service.
+                </p>
+                <Card style={{ padding: 0, overflow: "hidden" }}>
+                    <img width="100%" src={figure2} />
+                </Card>
+                <p>
+                    <i>Figure 2. Overview of MEGAnno+ system.</i>
+                </p>
+                <H4 className={Classes.TEXT_MUTED}>Demo</H4>
+                <p>
+                    This demo allows you to try out our system on Google Colab
+                    using an example dataset and labeling task. We plan to
+                    release a full open-sourced version shortly after, so stay
+                    tuned. For more information, please check out our EACL 2024
+                    demo paper below:
+                </p>
                 <div>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Facilisi nullam vehicula ipsum a arcu cursus vitae
-                    congue mauris. Eget mauris pharetra et ultrices neque.
-                    Semper auctor neque vitae tempus quam. Laoreet suspendisse
-                    interdum consectetur libero id faucibus nisl tincidunt. Urna
-                    duis convallis convallis tellus id. Sit amet commodo nulla
-                    facilisi nullam vehicula ipsum a. Dignissim enim sit amet
-                    venenatis urna cursus eget nunc. Pretium quam vulputate
-                    dignissim suspendisse in est ante. Nibh ipsum consequat nisl
-                    vel pretium lectus quam id. Nulla posuere sollicitudin
-                    aliquam ultrices sagittis orci a scelerisque. Et netus et
-                    malesuada fames ac turpis. In hac habitasse platea dictumst.
-                    Sit amet purus gravida quis blandit turpis. Nisl vel pretium
-                    lectus quam id leo in vitae. Odio euismod lacinia at quis
-                    risus sed vulputate odio. Pulvinar neque laoreet suspendisse
-                    interdum consectetur. Aliquam faucibus purus in massa tempor
-                    nec. Vulputate ut pharetra sit amet.
+                    <a target="_blank" href="https://arxiv.org/abs/2402.18050">
+                        MEGAnno+: A Human-LLM Collaborative Annotation System
+                    </a>
+                    <p>
+                        Hannah Kim, Kushan Mitra, Rafael Li Chen, Sajjadur
+                        Rahman, Dan Zhang
+                        <br />
+                        EACL 2024 Demo
+                    </p>
                 </div>
+                <Tooltip
+                    placement="bottom-start"
+                    content={
+                        <Pre style={{ width: 500, overflow: "hidden" }}>
+                            {citaton_1}
+                        </Pre>
+                    }
+                >
+                    <Button
+                        icon={faIcon({ icon: faCopy })}
+                        outlined
+                        onClick={() => {
+                            copy(citaton_1);
+                        }}
+                        text={
+                            <div>
+                                Cite our paper&nbsp;
+                                <span className={Classes.TEXT_MUTED}>
+                                    (click to copy)
+                                </span>
+                            </div>
+                        }
+                    />
+                </Tooltip>
+                <div style={{ marginTop: 20 }}>
+                    <a
+                        target="_blank"
+                        href="https://aclanthology.org/2022.dash-1.1/"
+                    >
+                        MEGAnno: Exploratory Labeling for NLP in Computational
+                        Notebooks
+                    </a>
+                    <p>
+                        Dan Zhang, Hannah Kim, Rafael Li Chen, Eser Kandogan,
+                        Estevam Hruschka
+                        <br />
+                        DaSH Workshop @ EMNLP 2022, Best paper award&nbsp;
+                        {faIcon({
+                            icon: faTrophy,
+                            style: { color: "#D1980B" },
+                        })}
+                    </p>
+                </div>
+                <Tooltip
+                    placement="bottom-start"
+                    content={
+                        <Pre style={{ width: 500, overflow: "hidden" }}>
+                            {citation_2}
+                        </Pre>
+                    }
+                >
+                    <Button
+                        icon={faIcon({ icon: faCopy })}
+                        outlined
+                        onClick={() => {
+                            copy(citation_2);
+                        }}
+                        text={
+                            <div>
+                                Cite our paper&nbsp;
+                                <span className={Classes.TEXT_MUTED}>
+                                    (click to copy)
+                                </span>
+                            </div>
+                        }
+                    />
+                </Tooltip>
                 <H3 id="page-instruction-title" style={{ textAlign: "center" }}>
                     Instruction
                 </H3>

@@ -43,14 +43,7 @@ export default function Eacl() {
             .then(() => {
                 actionToaster.show(
                     createToast({
-                        message: (
-                            <div>
-                                A token has been sent to your email account
-                                <br />
-                                Please follow the instruction in the email to
-                                continue
-                            </div>
-                        ),
+                        message: "A token has been sent to your email account.",
                         intent: Intent.SUCCESS,
                     })
                 );
