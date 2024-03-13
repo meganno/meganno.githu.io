@@ -21,8 +21,10 @@ import {
 import axios from "axios";
 import classNames from "classnames";
 import copy from "copy-to-clipboard";
+import _ from "lodash";
 import { useEffect, useState } from "react";
 import { Col, Row } from "react-grid-system";
+import { validateEmail } from "../constant";
 import { faIcon } from "../icon";
 import logo from "../logo_with_text_vertical.png";
 import figure1 from "../meganno_site_fig1.png";
@@ -67,7 +69,26 @@ export default function BlogPost() {
         setName("");
         setEmail("");
     };
+    const [error, setError] = useState({});
     const handleSubmit = () => {
+        let check = {};
+        if (!validateEmail(email)) {
+            check["email"] = "Invalid email address.";
+        }
+        if (_.isEmpty(_.trim(name))) {
+            check["name"] = "Name cannot be empty.";
+        }
+        if (_.isEmpty(_.trim(heardFrom))) {
+            check["heardFrom"] = "Cannot be empty.";
+        }
+        if (_.isEmpty(_.trim(useFor))) {
+            check["useFor"] = "Cannot be empty.";
+        }
+        if (!_.isEmpty(check)) {
+            setError(check);
+            return;
+        }
+        setError({});
         setLoading(true);
         axios
             .post(
@@ -82,7 +103,8 @@ export default function BlogPost() {
             .then(() => {
                 actionToaster.show(
                     createToast({
-                        message: "Your request is under review.",
+                        message:
+                            "Your request is under review. Thanks for applying!",
                         intent: Intent.SUCCESS,
                     })
                 );
@@ -91,6 +113,7 @@ export default function BlogPost() {
             })
             .catch(({ response }) => {
                 const data = _.get(response, "data", {});
+                setError(data);
                 actionToaster.show(
                     createToast({
                         message: JSON.stringify(data),
@@ -286,8 +309,16 @@ export default function BlogPost() {
                 >
                     Request Form
                 </H3>
-                <FormGroup label="Where did you hear about MEGAnno?">
+                <FormGroup
+                    label="Where did you hear about MEGAnno?"
+                    helperText={
+                        _.has(error, "heardFrom") ? error.heardFrom : null
+                    }
+                >
                     <InputGroup
+                        intent={
+                            _.has(error, "heardFrom") ? Intent.DANGER : null
+                        }
                         className={loading ? Classes.SKELETON : null}
                         type="text"
                         large
@@ -297,8 +328,12 @@ export default function BlogPost() {
                         }}
                     />
                 </FormGroup>
-                <FormGroup label="What will you be using it for?">
+                <FormGroup
+                    label="What will you be using it for?"
+                    helperText={_.has(error, "useFor") ? error.useFor : null}
+                >
                     <TextArea
+                        intent={_.has(error, "useFor") ? Intent.DANGER : null}
                         className={loading ? Classes.SKELETON : null}
                         large
                         fill
@@ -312,8 +347,16 @@ export default function BlogPost() {
                 </FormGroup>
                 <Row>
                     <Col xs={12} sm={6}>
-                        <FormGroup label="Name">
+                        <FormGroup
+                            label="Name"
+                            helperText={
+                                _.has(error, "name") ? error.name : null
+                            }
+                        >
                             <InputGroup
+                                intent={
+                                    _.has(error, "name") ? Intent.DANGER : null
+                                }
                                 className={loading ? Classes.SKELETON : null}
                                 large
                                 type="text"
@@ -325,8 +368,16 @@ export default function BlogPost() {
                         </FormGroup>
                     </Col>
                     <Col xs={12} sm={6}>
-                        <FormGroup label="Email">
+                        <FormGroup
+                            label="Email"
+                            helperText={
+                                _.has(error, "email") ? error.email : null
+                            }
+                        >
                             <InputGroup
+                                intent={
+                                    _.has(error, "email") ? Intent.DANGER : null
+                                }
                                 className={loading ? Classes.SKELETON : null}
                                 large
                                 type="email"

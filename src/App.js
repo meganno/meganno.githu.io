@@ -84,7 +84,10 @@ function App() {
                         <PageSection />
                     </Card>
                 </Visible>
-                <Navbar.Group align={Alignment.RIGHT}>
+                <Navbar.Group
+                    align={Alignment.RIGHT}
+                    style={{ visibility: "hidden" }}
+                >
                     <Popover
                         placement="bottom-end"
                         content={
