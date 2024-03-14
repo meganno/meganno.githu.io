@@ -96,6 +96,11 @@ export default function Eacl() {
                 }}
             >
                 <About />
+                <video
+                    src="https://meganno.s3.amazonaws.com/eacl-2024-demo.mp4"
+                    controls="controls"
+                    style={{ width: "100%", marginTop: 40 }}
+                />
                 <H3 id="page-instruction-title" style={{ textAlign: "center" }}>
                     Instruction
                 </H3>
