@@ -23,6 +23,14 @@ import Eacl from "./pages/Eacl";
 FocusStyleManager.onlyShowFocusOnTabs();
 function App() {
     const [activePage, setActivePage] = useState("blog-post");
+    const [width, setWidth] = useState(window.innerWidth);
+    useEffect(() => {
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
     const setPage = (value) => {
         window.location.hash = `#${value}`;
         setActivePage(value);
@@ -44,9 +52,8 @@ function App() {
             <Navbar
                 fixedToTop
                 style={{
-                    position: "relative",
-                    paddingLeft: 50,
-                    paddingRight: 50,
+                    paddingLeft: width < 500 ? 15 : 50,
+                    paddingRight: width < 500 ? 15 : 50,
                 }}
             >
                 <Navbar.Group align={Alignment.LEFT}>

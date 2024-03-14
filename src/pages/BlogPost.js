@@ -109,7 +109,8 @@ export default function BlogPost() {
     return (
         <div
             style={{
-                height: "calc(100vh - 50px)",
+                marginTop: 50,
+                height: "calc(100% - 50px)",
                 width: "100%",
                 overflowY: "auto",
             }}
@@ -312,6 +313,7 @@ export default function BlogPost() {
                 <div
                     style={{
                         marginTop: 15,
+                        marginBottom: 40,
                         display: "flex",
                         justifyContent: "center",
                     }}
@@ -325,7 +327,6 @@ export default function BlogPost() {
                         text="Submit"
                     />
                 </div>
-                <H3 style={{ textAlign: "center" }}>Resource</H3>
                 <div
                     style={{
                         display: "flex",

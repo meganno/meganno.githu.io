@@ -1,5 +1,6 @@
 import { Button, Card, Classes, H3, H4, Pre, Tooltip } from "@blueprintjs/core";
 import {
+    faArrowRightLong,
     faCircle1,
     faCircle2,
     faCopy,
@@ -38,9 +39,9 @@ export default function About() {
             <p>
                 MEGAnno is a human-LLM collaborative annotation framework. For
                 cost-efficient and high-quality annotation, we adopt the LLM
-                annotation → Human verification workflow where LLM agents label
-                data first and then humans verify a subset of potentially
-                problematic LLM labels.
+                annotation {faIcon({ icon: faArrowRightLong })} Human
+                verification workflow where LLM agents label data first and then
+                humans verify a subset of potentially problematic LLM labels.
             </p>
             <Card style={{ padding: 0, overflow: "hidden" }}>
                 <img width="100%" src={figure1} />
