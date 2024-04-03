@@ -72,6 +72,7 @@ export default function BlogPost() {
             .then(() => {
                 actionToaster.show(
                     createToast({
+                        timeout: 10000,
                         icon: faPartyHorn,
                         message: (
                             <div>
@@ -99,6 +100,7 @@ export default function BlogPost() {
                 setError(data);
                 actionToaster.show(
                     createToast({
+                        timeout: 10000,
                         message: JSON.stringify(data),
                         intent: Intent.DANGER,
                     })

@@ -44,6 +44,7 @@ export default function Eacl() {
             .then(() => {
                 actionToaster.show(
                     createToast({
+                        timeout: 10000,
                         icon: faInboxIn,
                         message: (
                             <div>
@@ -68,6 +69,7 @@ export default function Eacl() {
                 setError(data);
                 actionToaster.show(
                     createToast({
+                        timeout: 10000,
                         message: JSON.stringify(data),
                         intent: Intent.DANGER,
                     })

@@ -2,6 +2,8 @@ import {
     Alignment,
     Button,
     Card,
+    Classes,
+    Dialog,
     FocusStyleManager,
     H3,
     Intent,
@@ -47,6 +49,7 @@ function App() {
         "blog-post": "MEGAnno Demo",
         "eacl-2024": "MEGAnno Demo@EACL2024",
     };
+    const [isDialogOpen, setIsDialogOpen] = useState(true);
     return (
         <div style={{ height: "100vh", overflow: "hidden" }}>
             <Navbar
@@ -136,6 +139,25 @@ function App() {
             </Navbar>
             {_.isEqual(activePage, "blog-post") ? <BlogPost /> : null}
             {_.isEqual(activePage, "eacl-2024") ? <Eacl /> : null}
+            <Dialog
+                isOpen={isDialogOpen}
+                onClose={() => {
+                    setIsDialogOpen(false);
+                }}
+                title="Looking for MEGAnno documentation?"
+                isCloseButtonShown={false}
+                style={{ maxWidth: 350 }}
+            >
+                <div style={{ padding: 15 }}>
+                    <div className={Classes.TEXT_LARGE}>
+                        Head to{" "}
+                        <a href="https://meganno.megagon.info">
+                            https://meganno.megagon.info
+                        </a>{" "}
+                        for meganno-client documentation.
+                    </div>
+                </div>
+            </Dialog>
         </div>
     );
 }
