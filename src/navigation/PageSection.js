@@ -5,13 +5,6 @@ export default function () {
         <ButtonGroup minimal fill>
             <Button
                 style={{ fontWeight: "bold" }}
-                text="About"
-                onClick={() => {
-                    scrollIntoViewWithOffset("#page-about-title");
-                }}
-            />
-            <Button
-                style={{ fontWeight: "bold" }}
                 text="Instruction"
                 onClick={() => {
                     scrollIntoViewWithOffset("#page-instruction-title");

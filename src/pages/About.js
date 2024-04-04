@@ -1,15 +1,7 @@
-import { Button, Card, Classes, H3, H4, Pre, Tooltip } from "@blueprintjs/core";
-import {
-    faArrowRightLong,
-    faCircle1,
-    faCircle2,
-    faCopy,
-    faTrophy,
-} from "@fortawesome/pro-duotone-svg-icons";
+import { Button, Classes, H4, Pre, Tooltip } from "@blueprintjs/core";
+import { faCopy, faTrophy } from "@fortawesome/pro-duotone-svg-icons";
 import copy from "copy-to-clipboard";
 import { faIcon } from "../icon";
-import figure1 from "../meganno_site_fig1.png";
-import figure2 from "../meganno_site_fig2.png";
 export default function About() {
     const citaton_1 = `@inproceedings{meganno-plus,
     title = "{MEGA}nno+: A Human-{LLM} Collaborative Annotation System",
@@ -32,53 +24,6 @@ export default function About() {
 }`;
     return (
         <>
-            <H3 id="page-about-title" style={{ textAlign: "center" }}>
-                About
-            </H3>
-            <H4 className={Classes.TEXT_MUTED}>What is MEGAnno?</H4>
-            <p>
-                MEGAnno is a human-LLM collaborative annotation framework. For
-                cost-efficient and high-quality annotation, we adopt the LLM
-                annotation {faIcon({ icon: faArrowRightLong })} Human
-                verification workflow where LLM agents label data first and then
-                humans verify a subset of potentially problematic LLM labels.
-            </p>
-            <Card style={{ padding: 0, overflow: "hidden" }}>
-                <img width="100%" src={figure1} />
-            </Card>
-            <p style={{ textAlign: "center" }}>
-                <i>Figure 1. Our human-LLM collaborative workflow.</i>
-            </p>
-            <br />
-            Our features include:
-            <ul>
-                <li>Effective LLM agent and annotation management</li>
-                <li>Convenient and robust LLM annotation</li>
-                <li>Exploration and verification of LLM labels by humans</li>
-                <li>Seamless annotation experience within Jupyter notebooks</li>
-            </ul>
-            <H4 className={Classes.TEXT_MUTED}>System Overview</H4>
-            <p>
-                MEGAnno provides two key components:{" "}
-                {faIcon({ icon: faCircle1 })} a Python client library featuring
-                interactive widgets and {faIcon({ icon: faCircle2 })} a back-end
-                service consisting of web API and database servers.{" "}
-                <Tooltip
-                    className={Classes.TOOLTIP_INDICATOR}
-                    content="Open source in April."
-                >
-                    To use our system
-                </Tooltip>
-                , a user can interact with a Jupyter Notebook that has the
-                MEGAnno client installed. Through programmatic interfaces and UI
-                widgets, the client communicates with the service.
-            </p>
-            <Card style={{ padding: 0, overflow: "hidden" }}>
-                <img width="100%" src={figure2} />
-            </Card>
-            <p style={{ textAlign: "center" }}>
-                <i>Figure 2. Overview of MEGAnno+ system.</i>
-            </p>
             <H4 className={Classes.TEXT_MUTED}>Demo</H4>
             <p>
                 This demo provides a playground for you to try out features of
