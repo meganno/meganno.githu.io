@@ -1,27 +1,18 @@
 import {
     Alignment,
-    Button,
     Card,
     Classes,
     Dialog,
     FocusStyleManager,
     H3,
-    Intent,
-    Menu,
-    MenuItem,
     Navbar,
-    Popover,
 } from "@blueprintjs/core";
-import { faNewspaper, faSignPost } from "@fortawesome/pro-duotone-svg-icons";
 import _ from "lodash";
 import { useEffect, useState } from "react";
 import { Visible } from "react-grid-system";
 import "./App.css";
-import eacl_logo from "./eacl-logo.png";
-import { faIcon } from "./icon";
 import PageSection from "./navigation/PageSection";
 import BlogPost from "./pages/BlogPost";
-import Eacl from "./pages/Eacl";
 FocusStyleManager.onlyShowFocusOnTabs();
 function App() {
     const [activePage, setActivePage] = useState("blog-post");
@@ -94,51 +85,8 @@ function App() {
                         <PageSection />
                     </Card>
                 </Visible>
-                <Navbar.Group align={Alignment.RIGHT}>
-                    <Popover
-                        placement="bottom-end"
-                        content={
-                            <Menu>
-                                <MenuItem
-                                    active={_.isEqual(activePage, "blog-post")}
-                                    icon={faIcon({ icon: faNewspaper })}
-                                    text="Blog Post"
-                                    onClick={() => {
-                                        setPage("blog-post");
-                                    }}
-                                />
-                                <MenuItem
-                                    active={_.isEqual(activePage, "eacl-2024")}
-                                    intent={Intent.DANGER}
-                                    icon={<img width={16} src={eacl_logo} />}
-                                    text="EACL 2024"
-                                    onClick={() => {
-                                        setPage("eacl-2024");
-                                    }}
-                                />
-                            </Menu>
-                        }
-                    >
-                        <>
-                            <Visible sm md lg xl xxl xxxl>
-                                <Button
-                                    minimal
-                                    text="Go to..."
-                                    icon={faIcon({ icon: faSignPost })}
-                                />
-                            </Visible>
-                            <Visible xs>
-                                <Button
-                                    minimal
-                                    icon={faIcon({ icon: faSignPost })}
-                                />
-                            </Visible>
-                        </>
-                    </Popover>
-                </Navbar.Group>
             </Navbar>
             {_.isEqual(activePage, "blog-post") ? <BlogPost /> : null}
-            {_.isEqual(activePage, "eacl-2024") ? <Eacl /> : null}
             <Dialog
                 isOpen={isDialogOpen}
                 onClose={() => {

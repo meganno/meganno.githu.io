@@ -3,11 +3,19 @@ import {
     Classes,
     FormGroup,
     H3,
+    H4,
     InputGroup,
     Intent,
+    Pre,
     TextArea,
+    Tooltip,
 } from "@blueprintjs/core";
-import { faInboxOut, faPartyHorn } from "@fortawesome/pro-duotone-svg-icons";
+import {
+    faCopy,
+    faInboxOut,
+    faPartyHorn,
+    faTrophy,
+} from "@fortawesome/pro-duotone-svg-icons";
 import axios from "axios";
 import classNames from "classnames";
 import _ from "lodash";
@@ -18,6 +26,25 @@ import { faIcon } from "../icon";
 import logo from "../logo_with_text_vertical.png";
 import { actionToaster, createToast } from "../toaster";
 import About from "./About";
+const citaton_1 = `@inproceedings{meganno-plus,
+    title = "{MEGA}nno+: A Human-{LLM} Collaborative Annotation System",
+    author = "Kim, Hannah and Mitra, Kushan and Li Chen, Rafael and Rahman, Sajjadur and Zhang, Dan",
+    booktitle = "Proceedings of the 18th Conference of the European Chapter of the Association for Computational Linguistics: System Demonstrations",
+    year = "2024",
+    publisher = "Association for Computational Linguistics",
+}`;
+const citation_2 = `@inproceedings{zhang-etal-2022-meganno,
+    title = "{MEGA}nno: Exploratory Labeling for {NLP} in Computational Notebooks",
+    author = "Zhang, Dan and Kim, Hannah and Li Chen, Rafael and Kandogan, Eser and Hruschka, Estevam",
+    editor = "Dragut, Eduard and Li, Yunyao and Popa, Lucian and Vucetic, Slobodan and Srivastava, Shashank",
+    booktitle = "Proceedings of the Fourth Workshop on Data Science with Human-in-the-Loop (Language Advances)",
+    month = dec,
+    year = "2022",
+    address = "Abu Dhabi, United Arab Emirates (Hybrid)",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2022.dash-1.1",
+    pages = "1--7",
+}`;
 export default function BlogPost() {
     const [width, setWidth] = useState(window.innerWidth);
     useEffect(() => {
@@ -129,103 +156,11 @@ export default function BlogPost() {
                 }}
             >
                 <About />
-                <H3 id="page-instruction-title" style={{ textAlign: "center" }}>
-                    Instruction
+                <H3 style={{ textAlign: "center" }}>
+                    To use MEGAnno for your own annotation needs,
+                    <br />
+                    stay tuned for the full open-source release.
                 </H3>
-                For your convenience, we prepared a{" "}
-                <a
-                    href="https://colab.research.google.com/drive/1kaKfPSJm0ztCzXHNhvzizo3OgsnlBgPz?usp=sharing"
-                    target="_blank"
-                >
-                    Google Colab notebook
-                </a>{" "}
-                for this demo. To run the Colab notebook, you’ll need a Google
-                account, an{" "}
-                <a
-                    target="_blank"
-                    href="https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key"
-                >
-                    OpenAI API key
-                </a>
-                , and a MEGAnno access token (you can get this by filling out
-                the{" "}
-                <a
-                    onClick={() => {
-                        scrollIntoViewWithOffset("#page-request-form-title");
-                    }}
-                >
-                    request form
-                </a>{" "}
-                below).
-                <ol>
-                    <li>
-                        <p>
-                            Click the link below to access the demo notebook.
-                            <br />
-                            <a
-                                href="https://colab.research.google.com/drive/1kaKfPSJm0ztCzXHNhvzizo3OgsnlBgPz?usp=sharing"
-                                target="_blank"
-                            >
-                                <Button
-                                    icon={
-                                        <svg
-                                            style={{ height: 32 }}
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <g id="colab-logo">
-                                                <path
-                                                    d="M4.54,9.46,2.19,7.1a6.93,6.93,0,0,0,0,9.79l2.36-2.36A3.59,3.59,0,0,1,4.54,9.46Z"
-                                                    style={{ fill: "#e8710a" }}
-                                                />
-                                                <path
-                                                    d="M2.19,7.1,4.54,9.46a3.59,3.59,0,0,1,5.08,0l1.71-2.93h0l-.1-.08h0A6.93,6.93,0,0,0,2.19,7.1Z"
-                                                    style={{ fill: "#f9ab00" }}
-                                                />
-                                                <path
-                                                    d="M11.34,17.46h0L9.62,14.54a3.59,3.59,0,0,1-5.08,0L2.19,16.9a6.93,6.93,0,0,0,9,.65l.11-.09"
-                                                    style={{ fill: "#f9ab00" }}
-                                                />
-                                                <path
-                                                    d="M12,7.1a6.93,6.93,0,0,0,0,9.79l2.36-2.36a3.59,3.59,0,1,1,5.08-5.08L21.81,7.1A6.93,6.93,0,0,0,12,7.1Z"
-                                                    style={{ fill: "#f9ab00" }}
-                                                />
-                                                <path
-                                                    d="M21.81,7.1,19.46,9.46a3.59,3.59,0,0,1-5.08,5.08L12,16.9A6.93,6.93,0,0,0,21.81,7.1Z"
-                                                    style={{ fill: "#e8710a" }}
-                                                />
-                                            </g>
-                                        </svg>
-                                    }
-                                    large
-                                    outlined
-                                    text="MEGAnno Blogpost Demo.ipynb"
-                                />
-                            </a>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Follow the steps in the notebook. You need to log in
-                            with your Google account to run this demo.
-                        </p>
-                        <ol type="a">
-                            <li>
-                                Note: You can run the notebook as is without
-                                saving any changes. If you’d like to make
-                                changes, we suggest you make a copy of the
-                                notebook.
-                            </li>
-                        </ol>
-                    </li>
-                    <li>
-                        When asked, provide your OpenAI API key and MEGAnno
-                        token in the notebook cell.
-                    </li>
-                    <li>
-                        Enjoy! Please let us know if you have any feedback or
-                        suggestions.
-                    </li>
-                </ol>
                 <H3
                     id="page-request-form-title"
                     style={{ textAlign: "center" }}
@@ -329,11 +264,213 @@ export default function BlogPost() {
                         text="Submit"
                     />
                 </div>
+                <H3 id="page-instruction-title" style={{ textAlign: "center" }}>
+                    Instruction
+                </H3>
+                For your convenience, we prepared a{" "}
+                <a
+                    href="https://colab.research.google.com/drive/1kaKfPSJm0ztCzXHNhvzizo3OgsnlBgPz?usp=sharing"
+                    target="_blank"
+                >
+                    Google Colab notebook
+                </a>{" "}
+                for this demo. To run the Colab notebook, you’ll need a Google
+                account, an{" "}
+                <a
+                    target="_blank"
+                    href="https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key"
+                >
+                    OpenAI API key
+                </a>
+                , and a MEGAnno access token (you can get this by filling out
+                the{" "}
+                <a
+                    onClick={() => {
+                        scrollIntoViewWithOffset("#page-request-form-title");
+                    }}
+                >
+                    request form
+                </a>{" "}
+                above).
+                <ol>
+                    <li>
+                        <p>
+                            Click the link below to access the demo notebook.
+                            <br />
+                            <a
+                                href="https://colab.research.google.com/drive/1kaKfPSJm0ztCzXHNhvzizo3OgsnlBgPz?usp=sharing"
+                                target="_blank"
+                            >
+                                <Button
+                                    icon={
+                                        <svg
+                                            style={{ height: 32 }}
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <g id="colab-logo">
+                                                <path
+                                                    d="M4.54,9.46,2.19,7.1a6.93,6.93,0,0,0,0,9.79l2.36-2.36A3.59,3.59,0,0,1,4.54,9.46Z"
+                                                    style={{ fill: "#e8710a" }}
+                                                />
+                                                <path
+                                                    d="M2.19,7.1,4.54,9.46a3.59,3.59,0,0,1,5.08,0l1.71-2.93h0l-.1-.08h0A6.93,6.93,0,0,0,2.19,7.1Z"
+                                                    style={{ fill: "#f9ab00" }}
+                                                />
+                                                <path
+                                                    d="M11.34,17.46h0L9.62,14.54a3.59,3.59,0,0,1-5.08,0L2.19,16.9a6.93,6.93,0,0,0,9,.65l.11-.09"
+                                                    style={{ fill: "#f9ab00" }}
+                                                />
+                                                <path
+                                                    d="M12,7.1a6.93,6.93,0,0,0,0,9.79l2.36-2.36a3.59,3.59,0,1,1,5.08-5.08L21.81,7.1A6.93,6.93,0,0,0,12,7.1Z"
+                                                    style={{ fill: "#f9ab00" }}
+                                                />
+                                                <path
+                                                    d="M21.81,7.1,19.46,9.46a3.59,3.59,0,0,1-5.08,5.08L12,16.9A6.93,6.93,0,0,0,21.81,7.1Z"
+                                                    style={{ fill: "#e8710a" }}
+                                                />
+                                            </g>
+                                        </svg>
+                                    }
+                                    large
+                                    outlined
+                                    text="MEGAnno Blogpost Demo.ipynb"
+                                />
+                            </a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Follow the steps in the notebook. You need to log in
+                            with your Google account to run this demo.
+                        </p>
+                        <ol type="a">
+                            <li>
+                                Note: You can run the notebook as is without
+                                saving any changes. If you’d like to make
+                                changes, we suggest you make a copy of the
+                                notebook.
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        When asked, provide your OpenAI API key and MEGAnno
+                        token in the notebook cell.
+                    </li>
+                    <li>
+                        Enjoy! Please let us know if you have any feedback or
+                        suggestions.
+                    </li>
+                </ol>
+                <H4 style={{ textAlign: "center" }}>
+                    Learn more about MEGAnno and its progression:
+                </H4>
+                <p>Blog Articles:</p>
+                <a
+                    target="_blank"
+                    href="https://megagon.ai/llms-as-data-annote-p1-challs-opps/"
+                >
+                    LLMs as Data Annotators (Part 1) – Challenges and
+                    Opportunities
+                </a>
+                <br />
+                <a
+                    target="_blank"
+                    href="https://megagon.ai/llms-asdata-annotators-p2-meganno-system/"
+                >
+                    LLMs as Data Annotators (Part 2) – MEGAnno+: A Human-LLM
+                    Collaborative Annotation System
+                </a>
+                <br />
+                <a target="_blank" href="https://megagon.ai/meganno_jupyter/">
+                    MEGAnno: Exploratory Labeling for NLP in Jupyter Notebooks
+                </a>
+                <br />
+                <br />
+                <p>Research Papers:</p>
+                <div>
+                    <a target="_blank" href="https://arxiv.org/abs/2402.18050">
+                        MEGAnno+: A Human-LLM Collaborative Annotation System
+                    </a>
+                    <p>
+                        Hannah Kim, Kushan Mitra, Rafael Li Chen, Sajjadur
+                        Rahman, Dan Zhang
+                        <br />
+                        EACL 2024 Demo
+                    </p>
+                </div>
+                <Tooltip
+                    placement="bottom-start"
+                    content={
+                        <Pre style={{ width: 500, overflow: "hidden" }}>
+                            {citaton_1}
+                        </Pre>
+                    }
+                >
+                    <Button
+                        icon={faIcon({ icon: faCopy })}
+                        outlined
+                        onClick={() => {
+                            copy(citaton_1);
+                        }}
+                        text={
+                            <div>
+                                Cite our paper&nbsp;
+                                <span className={Classes.TEXT_MUTED}>
+                                    (click to copy)
+                                </span>
+                            </div>
+                        }
+                    />
+                </Tooltip>
+                <div style={{ marginTop: 20 }}>
+                    <a
+                        target="_blank"
+                        href="https://aclanthology.org/2022.dash-1.1/"
+                    >
+                        MEGAnno: Exploratory Labeling for NLP in Computational
+                        Notebooks
+                    </a>
+                    <p>
+                        Dan Zhang, Hannah Kim, Rafael Li Chen, Eser Kandogan,
+                        Estevam Hruschka
+                        <br />
+                        DaSH Workshop @ EMNLP 2022, Best paper award&nbsp;
+                        {faIcon({
+                            icon: faTrophy,
+                            style: { color: "#D1980B" },
+                        })}
+                    </p>
+                </div>
+                <Tooltip
+                    placement="bottom-start"
+                    content={
+                        <Pre style={{ width: 500, overflow: "hidden" }}>
+                            {citation_2}
+                        </Pre>
+                    }
+                >
+                    <Button
+                        icon={faIcon({ icon: faCopy })}
+                        outlined
+                        onClick={() => {
+                            copy(citation_2);
+                        }}
+                        text={
+                            <div>
+                                Cite our paper&nbsp;
+                                <span className={Classes.TEXT_MUTED}>
+                                    (click to copy)
+                                </span>
+                            </div>
+                        }
+                    />
+                </Tooltip>
                 <div
                     style={{
                         display: "flex",
                         justifyContent: "center",
                         marginBottom: 40,
+                        marginTop: 40,
                     }}
                 >
                     <a target="_blank" href="https://megagon.ai">
