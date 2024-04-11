@@ -150,7 +150,7 @@ export default function BlogPost() {
                     maxWidth: "100vw",
                     margin: "auto",
                     width: 800,
-                    marginTop: width < 1200 ? 105 : 0,
+                    marginTop: width < 1200 ? 95 : 0,
                     paddingLeft: 15,
                     paddingRight: 15,
                 }}
@@ -162,6 +162,7 @@ export default function BlogPost() {
                     stay tuned for the full open-source release.
                 </H3>
                 <H3
+                    className="section"
                     id="page-request-form-title"
                     style={{ textAlign: "center" }}
                 >
@@ -264,7 +265,11 @@ export default function BlogPost() {
                         text="Submit"
                     />
                 </div>
-                <H3 id="page-instruction-title" style={{ textAlign: "center" }}>
+                <H3
+                    className="section"
+                    id="page-instruction-title"
+                    style={{ textAlign: "center" }}
+                >
                     Instruction
                 </H3>
                 For your convenience, we prepared a{" "}

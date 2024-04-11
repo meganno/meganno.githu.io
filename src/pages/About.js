@@ -3,7 +3,11 @@ import { scrollIntoViewWithOffset } from "../constant";
 export default function About() {
     return (
         <>
-            <H3 id="page-about-title" style={{ textAlign: "center" }}>
+            <H3
+                className="section"
+                id="page-about-title"
+                style={{ textAlign: "center" }}
+            >
                 About
             </H3>
             Try our MEGAnno demo, a human-LLM collaborative annotation

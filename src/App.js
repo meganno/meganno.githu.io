@@ -1,13 +1,13 @@
 import {
     Alignment,
+    Button,
     Card,
     Classes,
-    Dialog,
     FocusStyleManager,
     H3,
+    Intent,
     Navbar,
 } from "@blueprintjs/core";
-import _ from "lodash";
 import { useEffect, useState } from "react";
 import { Visible } from "react-grid-system";
 import "./App.css";
@@ -15,32 +15,45 @@ import PageSection from "./navigation/PageSection";
 import BlogPost from "./pages/BlogPost";
 FocusStyleManager.onlyShowFocusOnTabs();
 function App() {
-    const [activePage, setActivePage] = useState("blog-post");
     const [width, setWidth] = useState(window.innerWidth);
     useEffect(() => {
         const handleResize = () => setWidth(window.innerWidth);
         window.addEventListener("resize", handleResize);
+        // dynamic link section detection
+        const scrollArea =
+            document.getElementsByClassName(" page-scroll-area")[0];
+        const onScroll = () => {
+            var current = "";
+            const sections = document.querySelectorAll(".section");
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop;
+                if (
+                    scrollArea.scrollTop +
+                        90 +
+                        50 +
+                        (window.innerWidth < 1200 ? 55 : 0) >=
+                    sectionTop
+                ) {
+                    current = section.getAttribute("id");
+                }
+            });
+            document
+                .querySelectorAll(".page-section-anchors button")
+                .forEach((button) => {
+                    button.classList.remove(Classes.ACTIVE);
+                });
+            try {
+                document
+                    .getElementById(`${current}-button`)
+                    .classList.add(Classes.ACTIVE);
+            } catch (error) {}
+        };
+        scrollArea.addEventListener("scroll", onScroll, { passive: true });
         return () => {
             window.removeEventListener("resize", handleResize);
+            window.removeEventListener("scroll", onScroll);
         };
     }, []);
-    const setPage = (value) => {
-        window.location.hash = `#${value}`;
-        setActivePage(value);
-    };
-    useEffect(() => {
-        const hash = window.location.hash;
-        let panel = hash.substring(hash.indexOf("#") + 1);
-        if (!_.includes(["blog-post", "eacl-2024"], panel)) {
-            panel = "blog-post";
-        }
-        setActivePage(panel);
-    }, []);
-    const HEADING = {
-        "blog-post": "MEGAnno Demo",
-        "eacl-2024": "MEGAnno Demo@EACL2024",
-    };
-    const [isDialogOpen, setIsDialogOpen] = useState(true);
     return (
         <div style={{ height: "100vh", overflow: "hidden" }}>
             <Navbar
@@ -52,10 +65,13 @@ function App() {
             >
                 <Navbar.Group align={Alignment.LEFT}>
                     <Navbar.Heading>
-                        <H3 style={{ margin: 0 }}>
-                            {_.get(HEADING, activePage, "MegAnno Demo")}
-                        </H3>
+                        <H3 style={{ margin: 0 }}>MEGAnno Demo</H3>
                     </Navbar.Heading>
+                </Navbar.Group>
+                <Navbar.Group align={Alignment.RIGHT}>
+                    <a href="https://meganno.megagon.info" target="_blank">
+                        <Button intent={Intent.PRIMARY} text="Documentation" />
+                    </a>
                 </Navbar.Group>
                 <Visible xl xxl xxxl>
                     <div
@@ -73,7 +89,7 @@ function App() {
                     <Card
                         elevation={3}
                         style={{
-                            padding: 10,
+                            padding: 5,
                             position: "absolute",
                             top: 65,
                             left: "50%",
@@ -86,26 +102,7 @@ function App() {
                     </Card>
                 </Visible>
             </Navbar>
-            {_.isEqual(activePage, "blog-post") ? <BlogPost /> : null}
-            <Dialog
-                isOpen={isDialogOpen}
-                onClose={() => {
-                    setIsDialogOpen(false);
-                }}
-                title="Looking for MEGAnno documentation?"
-                isCloseButtonShown={false}
-                style={{ maxWidth: 350 }}
-            >
-                <div style={{ padding: 15 }}>
-                    <div className={Classes.TEXT_LARGE}>
-                        Head to{" "}
-                        <a href="https://meganno.megagon.info">
-                            https://meganno.megagon.info
-                        </a>{" "}
-                        for meganno-client documentation.
-                    </div>
-                </div>
-            </Dialog>
+            <BlogPost />
         </div>
     );
 }
