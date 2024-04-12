@@ -92,7 +92,7 @@ export default function Eacl() {
                     maxWidth: "100vw",
                     margin: "auto",
                     width: 800,
-                    marginTop: width < 1200 ? 105 : 0,
+                    marginTop: width < 992 ? 105 : 0,
                     paddingLeft: 15,
                     paddingRight: 15,
                 }}

@@ -8,6 +8,7 @@ import {
     Intent,
     Navbar,
 } from "@blueprintjs/core";
+import _ from "lodash";
 import { useEffect, useState } from "react";
 import { Visible } from "react-grid-system";
 import "./App.css";
@@ -16,6 +17,9 @@ import BlogPost from "./pages/BlogPost";
 FocusStyleManager.onlyShowFocusOnTabs();
 function App() {
     const [width, setWidth] = useState(window.innerWidth);
+    if (_.isEqual(window.location.pathname, "/")) {
+        window.location = "https://meganno.megagon.info";
+    }
     useEffect(() => {
         const handleResize = () => setWidth(window.innerWidth);
         window.addEventListener("resize", handleResize);
@@ -31,7 +35,7 @@ function App() {
                     scrollArea.scrollTop +
                         90 +
                         50 +
-                        (window.innerWidth < 1200 ? 55 : 0) >=
+                        (window.innerWidth < 992 ? 55 : 0) >=
                     sectionTop
                 ) {
                     current = section.getAttribute("id");
@@ -73,7 +77,7 @@ function App() {
                         <Button intent={Intent.PRIMARY} text="Documentation" />
                     </a>
                 </Navbar.Group>
-                <Visible xl xxl xxxl>
+                <Visible lg xl xxl xxxl>
                     <div
                         style={{
                             position: "absolute",
@@ -85,7 +89,7 @@ function App() {
                         <PageSection />
                     </div>
                 </Visible>
-                <Visible xs sm md lg>
+                <Visible xs sm md>
                     <Card
                         elevation={3}
                         style={{
@@ -93,7 +97,7 @@ function App() {
                             position: "absolute",
                             top: 65,
                             left: "50%",
-                            width: 346.94,
+                            width: 221.58,
                             maxWidth: "calc(100vw - 30px)",
                             transform: "translate(-50%, 0)",
                         }}

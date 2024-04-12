@@ -1,9 +1,9 @@
-import { Button, ButtonGroup, Classes } from "@blueprintjs/core";
+import { Button, ButtonGroup } from "@blueprintjs/core";
 import { scrollIntoViewWithOffset } from "../constant";
 export default function () {
     return (
         <ButtonGroup minimal fill className="page-section-anchors">
-            <Button
+            {/* <Button
                 className={Classes.ACTIVE}
                 id="page-about-title-button"
                 style={{ fontWeight: "bold" }}
@@ -11,7 +11,7 @@ export default function () {
                 onClick={() => {
                     scrollIntoViewWithOffset("#page-about-title");
                 }}
-            />
+            /> */}
             <Button
                 id="page-request-form-title-button"
                 style={{ fontWeight: "bold" }}

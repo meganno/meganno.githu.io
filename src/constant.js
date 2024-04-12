@@ -10,6 +10,6 @@ export const scrollIntoViewWithOffset = (selector) => {
             document.querySelector(selector).offsetTop -
             40 -
             50 -
-            (window.innerWidth < 1200 ? 55 : 0),
+            (window.innerWidth < 992 ? 55 : 0),
     });
 };

@@ -25,7 +25,6 @@ import { scrollIntoViewWithOffset, validateEmail } from "../constant";
 import { faIcon } from "../icon";
 import logo from "../logo_with_text_vertical.png";
 import { actionToaster, createToast } from "../toaster";
-import About from "./About";
 const citaton_1 = `@inproceedings{meganno-plus,
     title = "{MEGA}nno+: A Human-{LLM} Collaborative Annotation System",
     author = "Kim, Hannah and Mitra, Kushan and Li Chen, Rafael and Rahman, Sajjadur and Zhang, Dan",
@@ -150,17 +149,11 @@ export default function BlogPost() {
                     maxWidth: "100vw",
                     margin: "auto",
                     width: 800,
-                    marginTop: width < 1200 ? 95 : 0,
+                    marginTop: width < 992 ? 95 : 0,
                     paddingLeft: 15,
                     paddingRight: 15,
                 }}
             >
-                <About />
-                <H3 style={{ textAlign: "center" }}>
-                    To use MEGAnno for your own annotation needs,
-                    <br />
-                    stay tuned for the full open-source release.
-                </H3>
                 <H3
                     className="section"
                     id="page-request-form-title"
