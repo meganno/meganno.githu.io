@@ -17,10 +17,12 @@ import BlogPost from "./pages/BlogPost";
 FocusStyleManager.onlyShowFocusOnTabs();
 function App() {
     const [width, setWidth] = useState(window.innerWidth);
-    if (_.isEqual(window.location.pathname, "/")) {
-        window.location = "https://meganno.megagon.info";
-    }
     useEffect(() => {
+        const hash = window.location.hash;
+        let panel = hash.substring(hash.indexOf("#") + 1);
+        if (!_.includes(["request_form"], panel)) {
+            window.location = "http://meganno.megagon.info";
+        }
         const handleResize = () => setWidth(window.innerWidth);
         window.addEventListener("resize", handleResize);
         // dynamic link section detection
